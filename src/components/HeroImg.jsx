@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import dancer1 from '../images/dancer1.svg';
 import roundText from '../images/roundText.svg';
 
-function HeroImg() {
+function HeroImg({pageWidth}) {
   const [offset, setOffset] = useState(0);
 
   const parallaxScroll = () => {
@@ -17,7 +17,7 @@ function HeroImg() {
   }, [offset])
 
   const parallaxStyle = {
-    transform: `translate(0, ${offset * -0.16}px)`,
+    transform: pageWidth > 768 ? `translate(0, ${offset * -0.16}px)` : `translate(0, ${offset * -0.06}px)`,
   }
 
 
@@ -89,6 +89,65 @@ const ScHeroImg = styled('div')`
     .dancer1,
     .roundText {
       top: -12%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 20%;
+    top: 60%;
+    right: 40%;
+    .bubbleHero {
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -10%) scale(0.4);
+      width: 42vw;
+      height: 42vw;
+      animation: bubbleGrowHeroImg 1.6s cubic-bezier(.56,-0.46,.4,1.42) 1s forwards;
+    }
+    .dancer1 {
+      top: 4%;
+      right: 0;
+      transform: translate(0, -50%);
+      width: 34vw;
+      animation-delay: 2.4s;
+    }
+    .roundText {
+      top: 0;
+      right: 0;
+      transform: translate(46%, 40%);
+      width: 26vw;
+    }
+
+    @keyframes bubbleGrowHeroImg {
+      to {
+        transform: translate(-50%, -10%) scale(1);
+      }
+    }
+  }
+
+  @media (max-width: 520px) {
+    top: 64%;
+    right: 36%;
+    .dancer1 {
+      top: 8%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    top: 65%;
+    .bubbleHero {
+      left: 60%;
+      width: 52vw;
+      height: 52vw;
+    }
+    .dancer1 {
+      top: 14%;
+      right: -20%;
+      width: 38vw;
+    }
+    .roundText {
+      transform: translate(68%, 40%);
+      width: 32vw;
     }
   }
 `

@@ -4,6 +4,7 @@ import GlobalStyles from "./GlobalStyles";
 import Hero from "./page/Hero";
 import SubHero from "./page/SubHero";
 import About from "./page/About";
+import ToTop from "./components/ToTop";
 
 function App() {
   const [scrollLock, setScrollLock] = useState(true);
@@ -29,13 +30,19 @@ function App() {
     };
   }, [pageWidth]);
 
+  // Scroll To Top on Page Refresh
+  window.onbeforeunload = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div>
+    <div id="top">
       <GlobalStyles scrollLock={scrollLock} />
-      <Nav navOpen={navOpen} setNavOpen={setNavOpen} />
+      <ToTop />
+      <Nav navOpen={navOpen} setNavOpen={setNavOpen} pageWidth={pageWidth} />
       <Hero pageWidth={pageWidth} />
-      <SubHero />
-      <About />
+      <SubHero pageWidth={pageWidth} />
+      <About pageWidth={pageWidth} />
     </div>
   );
 }

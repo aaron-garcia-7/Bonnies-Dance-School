@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import dancer2 from '../images/dancer2.svg';
 
-function AboutImg() {
+function AboutImg({pageWidth}) {
   const [offset, setOffset] = useState(0);
   
   const parallaxScroll = () => {
@@ -16,7 +16,7 @@ function AboutImg() {
   }, [offset])
   
   const parallaxStyle = {
-    transform: `translate(0, ${offset * -0.12}px)`,
+    transform: pageWidth > 768 ? `translate(0, ${offset * -0.12}px)` : `translate(0, ${offset * -0.08}px)`,
   }
 
   return (
@@ -28,7 +28,6 @@ function AboutImg() {
 }
 
 const ScAboutImg = styled('div')`
-    /* border: 1px dashed grey; */
     left: 12%;
     width: 30%;
     height: 50%;
@@ -36,10 +35,6 @@ const ScAboutImg = styled('div')`
       position: absolute;
       -webkit-user-drag: none;
     }
-    /* .bubbleAbout,
-    .dancer2 {
-      top: 40%;
-    } */
     .bubbleAbout {
       top: 40%;
       left: 44%;
@@ -70,6 +65,52 @@ const ScAboutImg = styled('div')`
         top: 42%;
       }
     }
+
+  @media (max-width: 1224px) {
+    .dancer2 {
+      top: 48%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    bottom: 12%;
+    left: 20%;
+    width: 40%;
+    height: 40%;
+    .bubbleAbout {
+      width: 42vw;
+      height: 42vw;
+    }
+    .dancer2 {
+      top: 60%;
+      width: 24vw;
+    }
+  }
+
+  @media (max-width: 520px) {
+    bottom: 8%;
+    left: 32%;
+    .bubbleAbout {
+      width: 42vw;
+      height: 42vw;
+    }
+    .dancer2 {
+      top: 64%;
+      /* width: 24vw; */
+    }
+  }
+
+  @media (max-width: 480px) {
+    bottom: 10%;
+    .bubbleAbout {
+      width: 52vw;
+      height: 52vw;
+    }
+    .dancer2 {
+      top: 60%;
+      left: 12%;
+      width: 38vw;
+    }  }
 `
 
 export default AboutImg

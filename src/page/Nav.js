@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import SocialMedia from "../components/SocialMedia";
 
-function Nav({ navOpen, setNavOpen }) {
+function Nav({ navOpen, setNavOpen, pageWidth }) {
   return (
     <ScNav>
-      <SocialMedia />
-      <h4>Logo Here</h4>
+      {pageWidth > 768 && <SocialMedia />}
+      <h4>Logo {pageWidth > 768 && "Here"}</h4>
       <div
         className={navOpen ? "burger active" : "burger"}
         onClick={() => setNavOpen((prev) => !prev)}
@@ -39,7 +39,6 @@ const ScNav = styled("nav")`
   .burger {
     width: 2rem;
     height: 2rem;
-    /* border: 2px solid black; */
     transition: all 0.6s;
     position: relative;
     width: 40px;

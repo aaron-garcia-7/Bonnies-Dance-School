@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import AboutImg from "../components/AboutImg";
 
-function About() {
+function About({ pageWidth }) {
   const [ref, inView] = useInView({
-    threshold: 0,
+    threshold: pageWidth > 768 ? 0.1 : 0.4,
     triggerOnce: true,
   });
 
+  // Parallax Effect
+  const [offset, setOffset] = useState(0);
+
+  const parallaxScroll = () => {
+    setOffset(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", parallaxScroll);
+    return () => window.removeEventListener("scroll", parallaxScroll);
+  }, [offset]);
+
+  const parallaxStyle = {
+    transform: `translate(0, ${offset * 0.1}px)`,
+  };
+  // End Parallax
+
   return (
     <ScAbout ref={ref}>
-      {inView && <AboutImg />}
+      {inView && <AboutImg pageWidth={pageWidth} />}
       <article className="aboutTextArea">
         <header>
           <h3 className="sectionTitle">About Me</h3>
@@ -28,6 +45,9 @@ function About() {
           <li>Limitless passion for dance!</li>
         </ul>
       </article>
+      {pageWidth <= 768 && (
+        <div className="bubbleAboutMobile" style={parallaxStyle} />
+      )}
     </ScAbout>
   );
 }
@@ -37,16 +57,16 @@ const ScAbout = styled("section")`
     position: absolute;
   }
   .aboutTextArea {
-    /* border: 1px dashed grey; */
     right: 14%;
     width: 33%;
-    height: 45%;
-    min-height: 22rem;
+    height: 46%;
+    min-height: 24rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     h3 {
       // See Global Styles
+      font-size: calc(1rem + 2vw);
     }
     p {
       font-size: calc(0.6rem + 0.8vw);
@@ -77,6 +97,54 @@ const ScAbout = styled("section")`
           border-radius: 50%;
         }
       }
+    }
+  }
+
+  @media (max-width: 1224px) {
+    .aboutTextArea {
+      right: 12%;
+      width: 38%;
+      height: 40%;
+      min-height: 22rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .aboutTextArea {
+      width: 38%;
+      min-height: 20rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 120vh;
+    min-height: 46rem;
+    .aboutTextArea {
+      right: 22%;
+      width: 60%;
+      min-height: 20rem;
+    }
+
+    .bubbleAboutMobile {
+      top: -34%;
+      right: 0;
+      width: 28vw;
+      height: 28vw;
+      background: var(--taupe);
+      opacity: 0.4;
+      border-radius: 50%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    height: 100vh;
+    min-height: 44rem;
+    .aboutTextArea {
+      width: 64%;
+      right: 20%;
+    }
+    .bubbleAboutMobile {
+      top: -28%;
     }
   }
 `;

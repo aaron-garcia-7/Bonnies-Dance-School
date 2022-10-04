@@ -17,7 +17,6 @@ function HeroTitle() {
 }
 
 const ScHeroTitle = styled('header')`
-   /* border: 1px dashed grey; */
    width: 50%;
    height: 40%;
    max-height: 18rem;
@@ -29,7 +28,6 @@ const ScHeroTitle = styled('header')`
    justify-content: space-between;
    z-index: 2;
    .title {
-       /* border: 1px solid black; */
        overflow: hidden;
        position: relative;
        display: flex;
@@ -74,11 +72,11 @@ const ScHeroTitle = styled('header')`
    }
 
    @media (max-width: 1440px) {
-    .preTitle {
-        span {
-            margin: 0 0.4rem;
+        .preTitle {
+            span {
+                margin: 0 0.4rem;
+            }
         }
-    }
    }
 
    @media (max-width: 1024px) {
@@ -86,10 +84,38 @@ const ScHeroTitle = styled('header')`
    }
 
    @media (max-width: 768px) {
-       height: 28%;
+       left: 18%;
+       width: 74%;
        .preTitle {
         top: -12%;
        }
+       .title {
+       &:nth-of-type(1) {
+           transform: translate(14%, 0);
+       }
+       &:nth-of-type(2) {
+           width: 86%;
+           transform: translate(28%, 0);
+       }
+       &:nth-of-type(3) {
+           width: 86%;
+           transform: translate(42%, 0);
+       }
+       .letter {
+           font-size: calc(1.6rem + 3.6vw);
+           letter-spacing: 0.6rem;
+       }
+     }
+   }
+
+   @media (max-width: 520px) {
+        height: 28%;
+        .preTitle {
+            font-size: calc(0.5rem + 0.2vw);
+            span {
+                margin: 0 0.2rem;
+            }
+        }
    }
 `
 

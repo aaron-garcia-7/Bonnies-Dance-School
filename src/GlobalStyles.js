@@ -34,13 +34,11 @@ const GlobalStyles = createGlobalStyle`
         position: relative;
         height: 100vh;
         min-height: 38rem;
-        /* overflow-x: hidden !important; */
         overflow: ${(props) => (props.scrollLock ? "hidden" : "default")};
     }
 
     .sectionTitle {
       color: var(--maroon);
-      font-size: calc(1rem + 1.8vw);
       font-weight: 100;
       letter-spacing: 0.3rem;
       line-height: 140%;

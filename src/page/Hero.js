@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import HeroImg from "../components/HeroImg";
-import HeroImgBackup from "../components/HeroImgBackup"; // No Parallax Effect
 import HeroTitle from "../components/HeroTitle";
-import scrollDown from "../images/scroll.svg";
+import ScrollDown from "../components/ScrollDown";
 
 function Hero({ pageWidth }) {
   return (
     <ScHero>
       <HeroTitle />
       {pageWidth > 768 && <HeroImg />}
-      {/* {pageWidth > 768 && <HeroImgBackup />} */}
+      {pageWidth <= 768 && <div className="heroBubbleMobile" />}
       <div className="ctaDiv">
         <a href="#" className="link">
           Register
@@ -19,9 +18,7 @@ function Hero({ pageWidth }) {
           Contact
         </a>
       </div>
-      <a href="#" className="scrollDown">
-        <img src={scrollDown} alt="" />
-      </a>
+      <ScrollDown />
     </ScHero>
   );
 }
@@ -60,7 +57,6 @@ const ScHero = styled("section")`
           transform: translate(20%, 320%) scale(1);
           width: 0.8rem;
           height: 0.8rem;
-          /* transition-delay: 0.1s; */
         }
         &:hover {
           &::before {
@@ -79,18 +75,17 @@ const ScHero = styled("section")`
           bottom: 0;
           right: 0;
           background: var(--maroon);
+          height: 2px;
           transition: 0.3s ease;
           pointer-events: none;
         }
         &::before {
           transform: translate(0%, 2px) scale(1);
           width: 100%;
-          height: 2px;
         }
         &::after {
           transform: translate(0%, 6px) scale(1);
           width: 68%;
-          height: 2px;
         }
         &:hover {
           &::before {
@@ -104,14 +99,50 @@ const ScHero = styled("section")`
     }
   }
 
-  .scrollDown {
-    position: absolute;
-    bottom: 2rem;
-    left: 2vw;
-    opacity: 0;
-    animation: fade 2s ease 3.2s forwards;
-    img {
-      width: calc(1rem + 0.8vw);
+  @media (max-width: 768px) {
+    overflow-x: hidden;
+    .heroBubbleMobile {
+      top: 16%;
+      right: 0;
+      transform: translate(20%, 0) scale(20);
+      width: 24vw;
+      height: 24vw;
+      background: var(--taupe);
+      border-radius: 50%;
+      animation: heroBubbleMobileShrink 2s cubic-bezier(0.55, 0.29, 0.24, 1.11)
+        1s forwards;
+    }
+
+    .ctaDiv {
+      bottom: 26%;
+      left: 20%;
+      a {
+        &:nth-of-type(1) {
+          margin-right: 6vw;
+          &::before {
+            transform: translate(-100%, 100%) scale(1);
+            width: 1.6rem;
+            height: 1.6rem;
+          }
+          &::after {
+            transform: translate(20%, 320%) scale(1);
+            width: 0.6rem;
+            height: 0.6rem;
+          }
+        }
+        &:nth-of-type(2) {
+          &::before,
+          &::after {
+            height: 1px;
+          }
+        }
+      }
+    }
+
+    @keyframes heroBubbleMobileShrink {
+      to {
+        transform: translate(20%, 0) scale(1);
+      }
     }
   }
 `;

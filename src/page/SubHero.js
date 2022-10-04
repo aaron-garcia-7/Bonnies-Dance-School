@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
+import HeroImg from "../components/HeroImg"; // Moved to SubHero when in mobile view
 
 import Poly from "../components/Poly";
 
-function SubHero() {
+function SubHero({ pageWidth }) {
   const [ref, inView] = useInView({
-    threshold: 0.4,
+    // threshold: 0.4,
+    threshold: pageWidth <= 1224 ? 0.1 : 0.4,
+    triggerOnce: true,
+  });
+  const [ref2, inView2] = useInView({
+    threshold: 0.1,
     triggerOnce: true,
   });
 
@@ -32,10 +38,11 @@ function SubHero() {
       {inView && <Poly />}
       <header className="subHeroTitle">
         <h3 className="sectionTitle">
-          Our Vision, <br /> Goals, &amp; <br /> Commitment
+          Our Vision, {pageWidth > 1224 && <br />} Goals, &amp;{" "}
+          {pageWidth > 1224 && <br />} Commitment
         </h3>
       </header>
-      <article>
+      <article ref={ref2}>
         <p>
           Bonnie's Dance School is commited to providing dancers and their
           families a positive environment where dancers will receive a
@@ -58,6 +65,7 @@ function SubHero() {
         </p>
       </article>
       <div className="bubbleSubHero" style={parallaxStyle} />
+      {pageWidth <= 768 && inView2 && <HeroImg pageWidth={pageWidth} />}
     </ScSubHero>
   );
 }
@@ -76,10 +84,10 @@ const ScSubHero = styled("section")`
     height: 36%;
     h3 {
       // See Global Styles
+      font-size: calc(0.8rem + 1.8vw);
     }
   }
   article {
-    /* border: 1px dashed grey; */
     padding-top: 1rem;
     height: 36%;
     p {
@@ -102,7 +110,6 @@ const ScSubHero = styled("section")`
     position: absolute;
     top: 26%;
     right: 26%;
-    /* transform: translate(0, 0); */
     width: 8vw;
     height: 8vw;
     border-radius: 50%;
@@ -127,6 +134,101 @@ const ScSubHero = styled("section")`
     .bubbleSubHero {
       top: 28%;
       right: 30%;
+    }
+  }
+
+  @media (max-width: 1224px) {
+    height: 80vh;
+    min-height: 36rem;
+    padding: 8rem 12vw 0 12vw;
+    justify-content: flex-start;
+
+    > * {
+      width: 40%;
+    }
+
+    #polySubHero {
+      transform: translate(-50%, -32%) scale(1);
+    }
+
+    .subHeroTitle {
+      position: absolute;
+      top: 28%;
+      width: 80%;
+      height: 10%;
+      h3 {
+        // See Global Styles
+        font-size: calc(0.8rem + 1.8vw);
+      }
+    }
+
+    article {
+      &:nth-of-type(1) {
+        margin-right: 8vw;
+      }
+    }
+
+    .bubbleSubHero {
+      top: 24%;
+      right: 10%;
+      width: 24vw;
+      height: 24vw;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 180vh;
+    min-height: 80rem;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+    > * {
+      position: absolute;
+    }
+    .subHeroTitle {
+      top: 16%;
+      left: 18%;
+      width: 14rem;
+      height: 20%;
+    }
+    article {
+      width: 50%;
+      height: 20%;
+      left: 18%;
+      &:nth-of-type(1) {
+        top: 30%;
+        margin-right: 0;
+      }
+      &:nth-of-type(2) {
+        top: 78%;
+        margin-right: 0;
+      }
+    }
+
+    .bubbleSubHero {
+      top: 2%;
+      right: -10%;
+      width: 48vw;
+      height: 48vw;
+    }
+  }
+
+  @media (max-width: 520px) {
+    height: 160vh;
+    min-height: 68rem;
+    article {
+      width: 58%;
+    }
+    .bubbleSubHero {
+      width: 42vw;
+      height: 42vw;
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 140vh;
+    article {
+      width: 68%;
     }
   }
 `;
