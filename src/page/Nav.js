@@ -34,6 +34,7 @@ const ScNav = styled("nav")`
   h4 {
     font-weight: 100;
     text-transform: uppercase;
+    transform: translate(-1vw, 0);
   }
 
   .burger {

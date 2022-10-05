@@ -37,6 +37,15 @@ const GlobalStyles = createGlobalStyle`
         overflow: ${(props) => (props.scrollLock ? "hidden" : "default")};
     }
 
+    a {
+        text-decoration: none;
+        font-family: var(--modern);
+    }
+
+    ul {
+        list-style: none;
+    }
+
     .sectionTitle {
       color: var(--maroon);
       font-weight: 100;
@@ -46,11 +55,13 @@ const GlobalStyles = createGlobalStyle`
     
 
     .link {
+        font-family: var(--classy);
+        font-size: calc(0.8rem + 0.8vw);
+        font-weight: 400;
         text-decoration: none;
-        font-size: calc(0.6rem + 0.8vw);
-        font-weight: 600;
-        color: var(--maroon);
+        color: var(--dark);
         letter-spacing: 0.1rem;
+        cursor: pointer;
     }
 
     .a11y {

@@ -4,7 +4,9 @@ import GlobalStyles from "./GlobalStyles";
 import Hero from "./page/Hero";
 import SubHero from "./page/SubHero";
 import About from "./page/About";
+import Location from "./page/Location";
 import ToTop from "./components/ToTop";
+import Footer from "./page/Footer";
 
 function App() {
   const [scrollLock, setScrollLock] = useState(true);
@@ -43,6 +45,8 @@ function App() {
       <Hero pageWidth={pageWidth} />
       <SubHero pageWidth={pageWidth} />
       <About pageWidth={pageWidth} />
+      <Location pageWidth={pageWidth} />
+      <Footer pageWidth={pageWidth} />
     </div>
   );
 }

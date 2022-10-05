@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
-import HeroImg from "../components/HeroImg"; // Moved to SubHero when in mobile view
-
 import Poly from "../components/Poly";
+import HeroImg from "../components/HeroImg"; // Moved to SubHero when in mobile view
 
 function SubHero({ pageWidth }) {
   const [ref, inView] = useInView({
@@ -34,7 +33,7 @@ function SubHero({ pageWidth }) {
   // End Parallax
 
   return (
-    <ScSubHero ref={ref}>
+    <ScSubHero ref={ref} id="subHero">
       {inView && <Poly />}
       <header className="subHeroTitle">
         <h3 className="sectionTitle">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import dancer2 from '../images/dancer2.svg';
+import roundText2 from '../images/roundText2.svg';
 
 function AboutImg({pageWidth}) {
   const [offset, setOffset] = useState(0);
@@ -23,6 +24,8 @@ function AboutImg({pageWidth}) {
     <ScAboutImg>
         <div className="bubbleAbout" />
         <img src={dancer2} alt="Line art of a girl in a difficult dance pose." className='dancer2' style={parallaxStyle}/>
+        <img src={roundText2} alt="Wholesome investment" className='roundText2'/>
+        <h4 className='a11y'>Wholesome investment</h4>
     </ScAboutImg>
   )
 }
@@ -36,7 +39,7 @@ const ScAboutImg = styled('div')`
       -webkit-user-drag: none;
     }
     .bubbleAbout {
-      top: 40%;
+      top: 40%; // To match RoundText
       left: 44%;
       transform: translate(-50%, -36%) scale(0.4);
       width: 24vw;
@@ -46,6 +49,14 @@ const ScAboutImg = styled('div')`
       border-radius: 50%;
       animation: bubbleGrow 1.4s cubic-bezier(.56,-0.46,.4,1.42) 0.8s forwards;
     }
+    .roundText2 {
+      top: 40%; // To match Bubble
+      left: 0;
+      transform: translate(-20%, -80%);
+      width: 12vw;
+      opacity: 0;
+      animation: fade 2s ease 1.6s forwards;
+    }
     .dancer2 {
       top: 36%;
       left: 20%;
@@ -53,6 +64,7 @@ const ScAboutImg = styled('div')`
       opacity: 0;
       animation: fade 2s ease 1.6s forwards;
     }
+
 
     @keyframes bubbleGrow {
       to {
@@ -81,6 +93,10 @@ const ScAboutImg = styled('div')`
       width: 42vw;
       height: 42vw;
     }
+    .roundText2 {
+      width: 20vw;
+      transform: translate(-40%, -80%);
+    }
     .dancer2 {
       top: 60%;
       width: 24vw;
@@ -105,6 +121,10 @@ const ScAboutImg = styled('div')`
     .bubbleAbout {
       width: 52vw;
       height: 52vw;
+    }
+    .roundText2 {
+      width: 28vw;
+      transform: translate(-60%, -80%);
     }
     .dancer2 {
       top: 60%;

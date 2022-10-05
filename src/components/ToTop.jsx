@@ -22,11 +22,13 @@ function ToTop() {
         pointerEvents: fromTop ? 'all' : 'none',
     }
   return (
-    <ScToTop to="top"
-    smooth={"easeInOutQuart"}
-    duration={800}
-    delay={40}
-    style={btnStyle}>
+    <ScToTop 
+      to="top"
+      smooth={"easeInOutQuart"}
+      duration={800}
+      delay={40}
+      style={btnStyle}
+    >
         <img src={chevron} alt="" />
     </ScToTop>
   )
@@ -47,7 +49,7 @@ const ScToTop = styled(scrollLink)`
     z-index: 5;
     transition: 0.6s ease;
     img {
-        width: calc(1rem + 1vw);
+        width: calc(0.8rem + 0.8vw);
         transition: 0.6s ease;
     }
     &:hover {

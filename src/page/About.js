@@ -27,7 +27,7 @@ function About({ pageWidth }) {
   // End Parallax
 
   return (
-    <ScAbout ref={ref}>
+    <ScAbout ref={ref} id="about">
       {inView && <AboutImg pageWidth={pageWidth} />}
       <article className="aboutTextArea">
         <header>
@@ -53,6 +53,9 @@ function About({ pageWidth }) {
 }
 
 const ScAbout = styled("section")`
+  /* border: 2px solid blue; */
+  height: 60vh;
+  min-height: 30rem;
   > * {
     position: absolute;
   }
@@ -77,7 +80,6 @@ const ScAbout = styled("section")`
       }
     }
     ul {
-      list-style: none;
       margin-left: 1.6rem;
       li {
         position: relative;
@@ -117,8 +119,8 @@ const ScAbout = styled("section")`
   }
 
   @media (max-width: 768px) {
-    height: 120vh;
-    min-height: 46rem;
+    height: 140vh;
+    min-height: 52rem;
     .aboutTextArea {
       right: 22%;
       width: 60%;

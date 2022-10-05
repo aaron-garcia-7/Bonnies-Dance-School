@@ -3,6 +3,8 @@ import styled from "styled-components";
 import HeroImg from "../components/HeroImg";
 import HeroTitle from "../components/HeroTitle";
 import ScrollDown from "../components/ScrollDown";
+import SocialMedia from "../components/SocialMedia";
+import registrationPdf from "../documents/Registration.pdf";
 
 function Hero({ pageWidth }) {
   return (
@@ -11,14 +13,15 @@ function Hero({ pageWidth }) {
       {pageWidth > 768 && <HeroImg />}
       {pageWidth <= 768 && <div className="heroBubbleMobile" />}
       <div className="ctaDiv">
-        <a href="#" className="link">
+        <a href={registrationPdf} target="_blank" className="link">
           Register
         </a>
-        <a href="#" className="link">
+        <a href="sms:8012029032" className="link">
           Contact
         </a>
       </div>
-      <ScrollDown />
+      <ScrollDown pageWidth={pageWidth} />
+      {pageWidth <= 768 && <SocialMedia inHero={true} />}
     </ScHero>
   );
 }
@@ -31,7 +34,7 @@ const ScHero = styled("section")`
   .ctaDiv {
     bottom: 20%;
     left: 14%;
-    a {
+    .link {
       position: relative;
       opacity: 0;
       animation: fade 2s ease 2.2s forwards;
@@ -116,7 +119,7 @@ const ScHero = styled("section")`
     .ctaDiv {
       bottom: 26%;
       left: 20%;
-      a {
+      .link {
         &:nth-of-type(1) {
           margin-right: 6vw;
           &::before {
@@ -137,6 +140,20 @@ const ScHero = styled("section")`
           }
         }
       }
+    }
+
+    #socialMediaHero {
+      /* border: 1px solid black; */
+      position: absolute;
+      bottom: 5rem;
+      right: 2vw;
+      flex-direction: column;
+      width: 1.8rem;
+      height: 4rem;
+      display: flex;
+      justify-content: space-between;
+      opacity: 0;
+      animation: fade 2s ease 2.2s forwards;
     }
 
     @keyframes heroBubbleMobileShrink {

@@ -3,17 +3,20 @@ import styled from 'styled-components';
 import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
 
-function SocialMedia() {
+function SocialMedia({inHero, inFooter}) {
   return (
-    <ScSocialMedia>
+    <ScSocialMedia id={inHero ? "socialMediaHero" : inFooter ? "socialMediaFooter" : null}>
+      <a href="https://www.facebook.com/profile.php?id=100057303255853&ref=hl" target="_blank">
         <img src={facebook} alt="facebook icon" className='socialMediaIcon'/>
+      </a>
+      <a href="https://www.instagram.com/bonniesdanceschool/" target="_blank">
         <img src={instagram} alt="instagram icon" className='socialMediaIcon'/>
+      </a>
     </ScSocialMedia>
   )
 }
 
 const ScSocialMedia = styled('div')`
-    /* border: 1px solid black; */
     width: 4rem;
     display: flex;
     justify-content: space-between;
