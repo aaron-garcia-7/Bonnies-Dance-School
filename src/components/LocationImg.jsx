@@ -18,6 +18,7 @@ function LocationImg() {
             </a>
         </figure>
         <img src={roundText3} alt="Tap to expand the map" className='roundText3'/>
+        <h4 className='a11y'>Tap to expand the map</h4>
     </ScLocationImg>
   )
 }

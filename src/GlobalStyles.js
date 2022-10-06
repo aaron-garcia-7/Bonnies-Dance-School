@@ -70,6 +70,14 @@ const GlobalStyles = createGlobalStyle`
         pointer-events: none;
     }
 
+    // Menu Animations
+    /* #menuStyle {
+        opacity: 1;
+        pointer-events: all;
+        transition-delay: 0.4s;
+    } */
+
+
     @keyframes fade {
         to {
             opacity: 1;

@@ -7,6 +7,7 @@ import About from "./page/About";
 import Location from "./page/Location";
 import ToTop from "./components/ToTop";
 import Footer from "./page/Footer";
+import Menu from "./page/Menu";
 
 function App() {
   const [scrollLock, setScrollLock] = useState(true);
@@ -41,9 +42,10 @@ function App() {
     <div id="top">
       <GlobalStyles scrollLock={scrollLock} />
       <ToTop />
+      <Menu navOpen={navOpen} setNavOpen={setNavOpen} pageWidth={pageWidth} />
       <Nav navOpen={navOpen} setNavOpen={setNavOpen} pageWidth={pageWidth} />
-      <Hero pageWidth={pageWidth} />
-      <SubHero pageWidth={pageWidth} />
+      <Hero pageWidth={pageWidth} navOpen={navOpen} />
+      <SubHero pageWidth={pageWidth} navOpen={navOpen} />
       <About pageWidth={pageWidth} />
       <Location pageWidth={pageWidth} />
       <Footer pageWidth={pageWidth} />

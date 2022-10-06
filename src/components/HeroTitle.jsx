@@ -3,10 +3,16 @@ import { motion } from 'framer-motion'
 import { titleAnim, letterAnim } from '../animations/intoAnimations';
 import styled from 'styled-components'
 
-function HeroTitle() {
+function HeroTitle({navOpen}) {
+
+    const menuStyle = {
+        transform: "translateY(-20%)",
+        opacity: 0,
+        transition: "0.8s ease 0.1s",
+      };
 
   return (
-    <ScHeroTitle>
+    <ScHeroTitle style={navOpen ? menuStyle : null}>
       <h1 className="a11y">Bonnie's Dance School</h1>
       <h3 className='preTitle'>Ballet<span>|</span>Contemporary<span>|</span>Jazz</h3>
       <TitleBlock title={"Bonnie’s"} />
@@ -27,6 +33,7 @@ const ScHeroTitle = styled('header')`
    flex-direction: column;
    justify-content: space-between;
    z-index: 2;
+   transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s; // For Menu Toggle
    .title {
        overflow: hidden;
        position: relative;

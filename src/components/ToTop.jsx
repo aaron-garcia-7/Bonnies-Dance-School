@@ -46,7 +46,7 @@ const ScToTop = styled(scrollLink)`
     align-items: center;
     padding: 0.2rem;
     cursor: pointer;
-    z-index: 5;
+    z-index: 4;
     transition: 0.6s ease;
     img {
         width: calc(0.8rem + 0.8vw);

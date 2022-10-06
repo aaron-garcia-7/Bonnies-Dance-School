@@ -11,16 +11,13 @@ function About({ pageWidth }) {
 
   // Parallax Effect
   const [offset, setOffset] = useState(0);
-
   const parallaxScroll = () => {
     setOffset(window.scrollY);
   };
-
   useEffect(() => {
     window.addEventListener("scroll", parallaxScroll);
     return () => window.removeEventListener("scroll", parallaxScroll);
   }, [offset]);
-
   const parallaxStyle = {
     transform: `translate(0, ${offset * 0.1}px)`,
   };

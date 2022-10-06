@@ -3,27 +3,40 @@ import styled from 'styled-components'
 import dancer1 from '../images/dancer1.svg';
 import roundText from '../images/roundText.svg';
 
-function HeroImg({pageWidth}) {
+function HeroImg({pageWidth, navOpen}) {
+  // Parallax Effect
   const [offset, setOffset] = useState(0);
-
   const parallaxScroll = () => {
     setOffset(window.scrollY);
   }
-
   useEffect(() => {
     window.addEventListener('scroll', parallaxScroll);
-
     return () => window.removeEventListener('scroll', parallaxScroll);
   }, [offset])
 
   const parallaxStyle = {
     transform: pageWidth > 768 ? `translate(0, ${offset * -0.16}px)` : `translate(0, ${offset * -0.06}px)`,
   }
+  // End Parallax Effect
 
+  // Allow for different animation durations/delays once loading animation is done.
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const loadTime = setTimeout(() => {
+      setLoading(false);
+    }, 3000)
+    return () => clearTimeout(loadTime);
+  }, [])
+  // End Loading Calc
+
+  const menuStyleBubble = {
+    transform: "translate(-50%, 10%) scale(1)",
+    animation: "bubbleMenuToggle 1s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
+  }
 
   return (
     <ScHeroImg>
-        <div className="bubbleHero"/>
+        <div className="bubbleHero" style={navOpen ? menuStyleBubble : null} id={loading ? "loadingAnim" : "menuAnim"}/>
         <img src={dancer1} alt="Line art of a girl dancing" className='dancer1' style={parallaxStyle}/>
         <img src={roundText} alt="Pursuing growth through dance" className='roundText' />
         <h4 className='a11y'>Pursing growth through dance</h4>
@@ -49,12 +62,24 @@ const ScHeroImg = styled('div')`
   .bubbleHero {
     background: var(--taupe);
     left: 50%;
-    transform: translate(-50%, 10%) scale(8);
     width: 32vw;
     height: 32vw;
     border-radius: 50%;
-    animation: bubbleShrink 2s cubic-bezier(.55,.29,.24,1.11) 1s forwards;
+    /* transform: translate(-50%, 10%) scale(12); // Grow Bubble Traditional Opening */
+    /* transform: translate(-50%, 10%) scale(0); // Shrink Bubble With Opening */
+    animation: bubbleShrink cubic-bezier(.55,.29,.24,1.11) forwards;
   }
+  #loadingAnim {
+    transform: translate(-50%, 10%) scale(12); // Grow Bubble
+    animation-duration: 2s;
+    animation-delay: 1s;
+  }
+  #menuAnim {
+    transform: translate(-50%, 10%) scale(0); // Shrink Bubble
+    animation-duration: 1.6s;
+    animation-delay: 0s;
+  }
+
   .dancer1 {
     right: 0;
     transform: translate(0, -50%);
@@ -75,6 +100,12 @@ const ScHeroImg = styled('div')`
       transform: translate(-50%, 10%) scale(1);
     }
   }
+  @keyframes bubbleMenuToggle {
+      to {
+        /* transform: translate(-50%, -10%) scale(12); // Grow Bubble */
+        transform: translate(-50%, -10%) scale(0); // Shrink Bubble
+      }
+    }
 
   @media (max-width: 1224px) {
     .bubbleHero,
@@ -93,62 +124,7 @@ const ScHeroImg = styled('div')`
   }
 
   @media (max-width: 768px) {
-    height: 20%;
-    top: 60%;
-    right: 40%;
-    .bubbleHero {
-      left: 50%;
-      top: 0;
-      transform: translate(-50%, -10%) scale(0.4);
-      width: 42vw;
-      height: 42vw;
-      animation: bubbleGrowHeroImg 1.6s cubic-bezier(.56,-0.46,.4,1.42) 1s forwards;
-    }
-    .dancer1 {
-      top: 4%;
-      right: 0;
-      transform: translate(0, -50%);
-      width: 34vw;
-      animation-delay: 2.4s;
-    }
-    .roundText {
-      top: 0;
-      right: 0;
-      transform: translate(46%, 40%);
-      width: 26vw;
-    }
-
-    @keyframes bubbleGrowHeroImg {
-      to {
-        transform: translate(-50%, -10%) scale(1);
-      }
-    }
-  }
-
-  @media (max-width: 520px) {
-    top: 64%;
-    right: 36%;
-    .dancer1 {
-      top: 8%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    top: 65%;
-    .bubbleHero {
-      left: 60%;
-      width: 52vw;
-      height: 52vw;
-    }
-    .dancer1 {
-      top: 14%;
-      right: -20%;
-      width: 38vw;
-    }
-    .roundText {
-      transform: translate(68%, 40%);
-      width: 32vw;
-    }
+    // See HeroImgMobile Component
   }
 `
 

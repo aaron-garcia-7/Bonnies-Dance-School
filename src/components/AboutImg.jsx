@@ -17,7 +17,8 @@ function AboutImg({pageWidth}) {
   }, [offset])
   
   const parallaxStyle = {
-    transform: pageWidth > 768 ? `translate(0, ${offset * -0.12}px)` : `translate(0, ${offset * -0.08}px)`,
+    // transform: pageWidth > 768 ? `translate(0, ${offset * -0.12}px)` : `translate(0, ${offset * -0.08}px)`,
+    transform: pageWidth > 768 ? `translate(0, ${offset * -0.1}px)` : `translate(0, ${offset * -0.08}px)`,
   }
 
   return (
@@ -31,6 +32,7 @@ function AboutImg({pageWidth}) {
 }
 
 const ScAboutImg = styled('div')`
+    top: 6%;
     left: 12%;
     width: 30%;
     height: 50%;
@@ -58,7 +60,8 @@ const ScAboutImg = styled('div')`
       animation: fade 2s ease 1.6s forwards;
     }
     .dancer2 {
-      top: 36%;
+      /* top: 36%; */
+      top: 20%;
       left: 20%;
       width: 16vw;
       opacity: 0;
@@ -68,23 +71,26 @@ const ScAboutImg = styled('div')`
 
     @keyframes bubbleGrow {
       to {
-      transform: translate(-50%, -36%) scale(1);
+        transform: translate(-50%, -36%) scale(1);
       }
     }
 
   @media (max-width: 1440px) {
+    top: 12%;
       .dancer2 {
-        top: 42%;
+        /* top: 42%; */
+        top: 32%;
       }
     }
 
   @media (max-width: 1224px) {
     .dancer2 {
-      top: 48%;
+      top: 42%;
     }
   }
 
   @media (max-width: 768px) {
+    top: auto;
     bottom: 12%;
     left: 20%;
     width: 40%;
@@ -98,7 +104,7 @@ const ScAboutImg = styled('div')`
       transform: translate(-40%, -80%);
     }
     .dancer2 {
-      top: 60%;
+      top: 66%;
       width: 24vw;
     }
   }
@@ -111,7 +117,7 @@ const ScAboutImg = styled('div')`
       height: 42vw;
     }
     .dancer2 {
-      top: 64%;
+      top: 72%;
       /* width: 24vw; */
     }
   }

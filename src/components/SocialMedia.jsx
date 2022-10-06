@@ -23,6 +23,10 @@ const ScSocialMedia = styled('div')`
     .socialMediaIcon {
         width: 1.2rem;
         height: 1.2rem;
+        transition: 0.7s cubic-bezier(.65,-1.18,.36,2.03);
+        &:hover {
+          transform: scale(1.3);
+        }
     }
 `
 

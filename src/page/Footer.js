@@ -2,6 +2,7 @@ import { Link } from "react-scroll";
 import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import Poly from "../components/Poly";
+import heart from "../images/heart.svg";
 import SocialMedia from "../components/SocialMedia";
 import registrationPdf from "../documents/Registration.pdf";
 
@@ -81,8 +82,12 @@ const Footer = ({ pageWidth }) => {
         </p>
       </div>
       <div className="credits">
-        <a href="https://garciathe.dev" target="_blank" rel="noreferrer">
+        {/* <a href="https://garciathe.dev" target="_blank" rel="noreferrer">
           &lt; Designed &amp; Developed by <span>Aaron Garcia</span> &gt;
+        </a> */}
+        <a href="https://garciathe.dev" target="_blank" rel="noreferrer">
+          Made with <img src={heart} className="heart" /> by{" "}
+          <span>Aaron Garcia</span>
         </a>
       </div>
       {pageWidth <= 768 && <SocialMedia inFooter={true} />}
@@ -109,6 +114,7 @@ const ScFooter = styled.footer`
     .dash {
       width: 0%;
       border: 1px solid var(--tan);
+      border-radius: 4px;
       animation: footerDash 0.6s ease forwards;
     }
     #polyFooter {
@@ -218,8 +224,15 @@ const ScFooter = styled.footer`
     bottom: 8%;
     transform: translate(-50%, 0);
     a {
+      color: var(--tan);
       font-size: calc(0.6rem + 0.2vw);
+      .heart {
+        padding: 0 0.1rem;
+        transform: translate(0, 30%) scale(0.7);
+        transition: 0.6s cubic-bezier(0.66, -0.72, 0.31, 1.49);
+      }
       span {
+        color: var(--tan);
         position: relative;
         font-family: "Quicksand", sans-serif;
         font-weight: 500;
@@ -235,6 +248,7 @@ const ScFooter = styled.footer`
           border-bottom: 1px solid var(--dark);
           opacity: 0;
           transition: 0.3s ease;
+          pointer-events: none;
         }
         &::before {
           width: 60%;
@@ -245,13 +259,19 @@ const ScFooter = styled.footer`
         }
       }
       &:hover {
+        .heart {
+          padding: 0 0.2rem;
+          transform: translate(0, 30%) scale(1);
+        }
         span {
-          color: var(--dark);
+          color: var(--plum);
           &::before {
+            border-bottom: 1px solid var(--plum);
             opacity: 1;
             bottom: -3px;
           }
           &::after {
+            border-bottom: 1px solid var(--plum);
             opacity: 1;
             bottom: -7px;
           }

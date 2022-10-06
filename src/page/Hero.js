@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeroImg from "../components/HeroImg";
 import HeroTitle from "../components/HeroTitle";
@@ -6,13 +6,41 @@ import ScrollDown from "../components/ScrollDown";
 import SocialMedia from "../components/SocialMedia";
 import registrationPdf from "../documents/Registration.pdf";
 
-function Hero({ pageWidth }) {
+function Hero({ pageWidth, navOpen }) {
+  const menuStyle = {
+    transform: "translateY(120%)",
+    opacity: 0,
+    transition: "0.4s ease",
+  };
+
+  // Allow for different animation durations/delays once loading animation is done.
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const loadTime = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+    return () => clearTimeout(loadTime);
+  }, []);
+  // End Loading Calc
+
+  const menuStyleBubbleMobile = {
+    transform: "translate(-50%, 0) scale(1)",
+    animation:
+      "bubbleMenuToggleMobile 1s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
+  };
+
   return (
     <ScHero>
-      <HeroTitle />
-      {pageWidth > 768 && <HeroImg />}
-      {pageWidth <= 768 && <div className="heroBubbleMobile" />}
-      <div className="ctaDiv">
+      <HeroTitle navOpen={navOpen} />
+      {pageWidth > 768 && <HeroImg navOpen={navOpen} />}
+      {pageWidth <= 768 && (
+        <div
+          className="heroBubbleMobile"
+          style={navOpen ? menuStyleBubbleMobile : null}
+          id={loading ? "loadingAnim" : "menuAnim"}
+        />
+      )}
+      <div className="ctaDiv" style={navOpen ? menuStyle : null}>
         <a href={registrationPdf} target="_blank" className="link">
           Register
         </a>
@@ -34,6 +62,7 @@ const ScHero = styled("section")`
   .ctaDiv {
     bottom: 20%;
     left: 14%;
+    transition: transform 0.9s ease 0.6s, opacity 0.9s ease 0.6s;
     .link {
       position: relative;
       opacity: 0;
@@ -48,7 +77,7 @@ const ScHero = styled("section")`
           left: 0;
           border-radius: 50%;
           background: var(--maroon);
-          transition: 0.3s ease;
+          transition: 0.6s cubic-bezier(0.74, -0.7, 0.46, 1.36);
           pointer-events: none;
         }
         &::before {
@@ -60,6 +89,7 @@ const ScHero = styled("section")`
           transform: translate(20%, 320%) scale(1);
           width: 0.8rem;
           height: 0.8rem;
+          transition-delay: 0.1s;
         }
         &:hover {
           &::before {
@@ -79,7 +109,7 @@ const ScHero = styled("section")`
           right: 0;
           background: var(--maroon);
           height: 2px;
-          transition: 0.3s ease;
+          transition: 0.7s cubic-bezier(0.55, -1.62, 0.36, 2.03);
           pointer-events: none;
         }
         &::before {
@@ -106,14 +136,24 @@ const ScHero = styled("section")`
     overflow-x: hidden;
     .heroBubbleMobile {
       top: 16%;
-      right: 0;
-      transform: translate(20%, 0) scale(20);
+      right: -20%;
+      transform: translate(-50%, 0) scale(20);
       width: 24vw;
       height: 24vw;
       background: var(--taupe);
       border-radius: 50%;
       animation: heroBubbleMobileShrink 2s cubic-bezier(0.55, 0.29, 0.24, 1.11)
         1s forwards;
+    }
+    #loadingAnim {
+      transform: translate(-50%, 0) scale(20); // Grow Bubble
+      animation-duration: 2s;
+      animation-delay: 1s;
+    }
+    #menuAnim {
+      transform: translate(-50%, 0) scale(0); // Shrink Bubble
+      animation-duration: 1.6s;
+      animation-delay: 0s;
     }
 
     .ctaDiv {
@@ -143,7 +183,6 @@ const ScHero = styled("section")`
     }
 
     #socialMediaHero {
-      /* border: 1px solid black; */
       position: absolute;
       bottom: 5rem;
       right: 2vw;
@@ -158,7 +197,13 @@ const ScHero = styled("section")`
 
     @keyframes heroBubbleMobileShrink {
       to {
-        transform: translate(20%, 0) scale(1);
+        transform: translate(-50%, 0) scale(1);
+      }
+    }
+
+    @keyframes bubbleMenuToggleMobile {
+      to {
+        transform: translate(-50%, -10%) scale(0); // Shrink Bubble
       }
     }
   }

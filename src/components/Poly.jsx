@@ -34,7 +34,7 @@ const ScPoly = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
+    z-index: 3;
     .dash {
       width: 1.6px;
       border-radius: 8px;

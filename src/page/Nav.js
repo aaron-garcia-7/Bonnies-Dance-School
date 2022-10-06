@@ -28,7 +28,7 @@ const ScNav = styled("nav")`
   justify-content: space-between;
   align-items: center;
   padding: 0 2vw;
-  z-index: 3;
+  z-index: 5;
   animation: menuDrop 1s ease 3.2s forwards;
 
   h4 {
@@ -56,6 +56,8 @@ const ScNav = styled("nav")`
       left: 0;
       border-radius: 2px;
       transition: all 0.6s cubic-bezier(0.6, 0.1, 0.4, 1.3);
+      /* transition: transform 0.7s cubic-bezier(0.65, -1.18, 0.36, 2.03); */
+
       width: 20;
       top: calc(50% - ((3.5px)) + -1px);
       &:nth-of-type(1) {
@@ -69,6 +71,9 @@ const ScNav = styled("nav")`
     }
     &.active {
       transform: scale(1.03) rotate(180deg);
+      &:hover {
+        transform: scale(1.3) rotate(180deg);
+      }
     }
     .line {
       &.active:nth-of-type(1) {
@@ -82,12 +87,19 @@ const ScNav = styled("nav")`
         width: 20px !important;
       }
     }
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 
   @keyframes menuDrop {
     to {
       transform: translate(0, 0);
     }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 2vw 0 3.2vw;
   }
 `;
 

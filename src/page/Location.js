@@ -95,7 +95,7 @@ const ScLocation = styled("section")`
         right: 0;
         background: var(--maroon);
         height: 2px;
-        transition: 0.3s ease;
+        transition: 0.7s cubic-bezier(0.55, -1.62, 0.36, 2.03);
         pointer-events: none;
       }
       &::before {
@@ -163,8 +163,8 @@ const ScLocation = styled("section")`
   }
 
   @media (max-width: 768px) {
-    height: 120vh;
-    min-height: 48rem;
+    height: 140vh;
+    min-height: 56rem;
     article {
       top: 34%;
       left: 18%;
