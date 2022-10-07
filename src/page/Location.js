@@ -104,13 +104,12 @@ const ScLocation = styled("section")`
     .textArea {
       transition: transform 1.4s ease 0.5s, opacity 1.4s ease 0.5s;
       .address {
-        font-size: calc(0.4rem + 0.8vw);
+        font-size: calc(0.6rem + 0.6vw);
       }
       .instructions {
-        width: 15rem;
         margin: 1rem 0 3.6rem 0;
         font-family: var(--modern);
-        font-size: calc(0.5rem + 0.3vw);
+        font-size: calc(0.5rem + 0.4vw);
         letter-spacing: 0.06rem;
       }
     }
@@ -129,7 +128,7 @@ const ScLocation = styled("section")`
           right: 0;
           background: var(--maroon);
           height: 2px;
-          transition: 0.7s cubic-bezier(0.55, -1.62, 0.36, 2.03);
+          transition: 0.7s cubic-bezier(0.66, -0.62, 0.4, 1.53);
           pointer-events: none;
         }
         &::before {
@@ -185,7 +184,6 @@ const ScLocation = styled("section")`
         }
       }
       .instructions {
-        width: 12rem;
         margin: 1rem 0 1.6rem 0;
       }
     }
@@ -203,11 +201,12 @@ const ScLocation = styled("section")`
     article {
       top: 34%;
       left: 18%;
-      .address {
-        font-size: calc(0.7rem + 1vw);
+      header {
+        h3 {
+          width: 46vw;
+        }
       }
       .instructions {
-        width: 11rem;
         margin: 1.4rem 0 2.6rem 0;
         font-size: calc(0.5rem + 0.4vw);
       }
