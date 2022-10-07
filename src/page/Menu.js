@@ -68,7 +68,7 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
           </li>
           <li>
             <div className="linkBlock" style={navOpen ? linkStyle2 : null}>
-              <a href="sms:8012029032">Contact</a>
+              <a href="sms:8015136972">Contact</a>
             </div>
           </li>
           <li>
@@ -91,7 +91,7 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
       <div className="menuBubble2" style={navOpen ? bubbleStyle2 : null} />
       <footer className="menuFooter" style={navOpen ? footerStyle : null}>
         <div className="left">
-          <a href="sms:8012029032">
+          <a href="sms:8015136972">
             <img src={phone} alt="" /> 801-513-6972
           </a>
           <a href="mailto:bonniesdanceschool@gmail.com">
@@ -124,7 +124,7 @@ const ScMenu = styled("aside")`
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s cubic-bezier(0.21, 0.81, 0.55, 1.02) 0.4s;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 
   > * {
     position: absolute;
@@ -261,6 +261,18 @@ const ScMenu = styled("aside")`
         }
       }
     }
+
+    .menuBubble1 {
+      top: 24%;
+      width: 16vw;
+      height: 16vw;
+    }
+    .menuBubble2 {
+      top: 62%;
+      right: -16%;
+      width: 46vw;
+      height: 46vw;
+    }
   }
 
   @media (max-width: 520px) {
@@ -269,6 +281,34 @@ const ScMenu = styled("aside")`
         transform: translate(0, -0.2rem);
       }
     }
+  }
+
+  @media (max-height: 480px) {
+    .list {
+      header {
+        height: calc(2.4rem + 2vw);
+        .headerBlock {
+          h5 {
+            font-size: calc(1.6rem + 1.6vw);
+          }
+        }
+      }
+      ul {
+        height: calc(4.4rem + 4.4vw);
+        margin: 1.2rem 0 2rem 0;
+        li {
+          .linkBlock {
+            a {
+              font-size: calc(0.8rem + 0.8vw);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menuFooter {
+    bottom: 0.6rem;
   }
 `;
 

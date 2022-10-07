@@ -45,7 +45,7 @@ function Hero({ pageWidth, navOpen, setNavOpen }) {
           Register
         </a>
         <a
-          href="sms:8012029032"
+          href="sms:8015136972"
           className="link"
           tabIndex={2}
           onFocus={() => setNavOpen(false)}

@@ -44,7 +44,7 @@ const Footer = ({ pageWidth }) => {
             </a>
           </li>
           <li>
-            <a href="sms:8012029032">Contact</a>
+            <a href="sms:8015136972">Contact</a>
           </li>
           <li>
             <Link
@@ -62,7 +62,7 @@ const Footer = ({ pageWidth }) => {
       <div className="contact">
         <h4>Contact Information</h4>
         <p className="contactMethod">
-          Phone<a href="sms:8012029032">801-202-9032</a>
+          Phone<a href="sms:8015136972">801-513-6972</a>
         </p>
         <p className="contactMethod">
           Email
