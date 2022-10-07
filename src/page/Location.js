@@ -42,7 +42,7 @@ function Location({ pageWidth, navOpen, setNavOpen }) {
 
   return (
     <ScLocation ref={ref}>
-      <Poly inLocation={true} />
+      {inView && <Poly inLocation={true} />}
       <div className="bubbleLocation" style={parallaxStyle} />
       <article>
         <header style={navOpen ? menuStyleHeader : null}>
