@@ -53,7 +53,7 @@ function Hero({ pageWidth, navOpen, setNavOpen }) {
           Contact
         </a>
       </div>
-      <ScrollDown pageWidth={pageWidth} />
+      <ScrollDown />
       {pageWidth <= 768 && <SocialMedia inHero={true} />}
     </ScHero>
   );
@@ -114,7 +114,7 @@ const ScHero = styled("section")`
           right: 0;
           background: var(--maroon);
           height: 2px;
-          transition: 0.7s cubic-bezier(0.55, -1.62, 0.36, 2.03);
+          transition: 0.7s cubic-bezier(0.66, -0.62, 0.4, 1.53);
           pointer-events: none;
         }
         &::before {

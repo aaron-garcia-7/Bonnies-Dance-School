@@ -1,24 +1,16 @@
 import React from 'react'
-import { Link } from 'react-scroll';
 import styled from 'styled-components'
 import arrow from '../images/arrow.svg';
 import scrollText from '../images/scrollText.svg';
 
-function ScrollDown({pageWidth}) {
+function ScrollDown() {
   return (
     <ScScrollDown>
-        <Link to="subHero"     
-          smooth={"easeInOutQuart"}
-          duration={800}
-          delay={40}
-          offset={pageWidth > 768 ? -140 : 0}
-        >
-            <img src={scrollText} alt="Scroll" className='scrollText'/>
-            <div className="arrowDiv">
-                <img src={arrow} alt="An arrow pointing down" />
-                <img src={arrow} alt="An arrow pointing down" />
-            </div>
-        </Link>
+        <img src={scrollText} alt="Scroll" className='scrollText'/>
+        <div className="arrowDiv">
+            <img src={arrow} alt="An arrow pointing down" />
+            <img src={arrow} alt="An arrow pointing down" />
+        </div>
     </ScScrollDown>
   )
 }
@@ -27,7 +19,6 @@ const ScScrollDown = styled('div')`
     position: absolute;
     bottom: 2rem;
     left: 2vw;
-    cursor: pointer;
     opacity: 0;
     animation: fade 2s ease 3.2s forwards;
     .scrollText {

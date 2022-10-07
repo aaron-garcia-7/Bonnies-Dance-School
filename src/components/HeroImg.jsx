@@ -70,8 +70,6 @@ const ScHeroImg = styled('div')`
     width: 32vw;
     height: 32vw;
     border-radius: 50%;
-    /* transform: translate(-50%, 10%) scale(12); // Grow Bubble Traditional Opening */
-    /* transform: translate(-50%, 10%) scale(0); // Shrink Bubble With Opening */
     animation: bubbleShrink cubic-bezier(.55,.29,.24,1.11) forwards;
   }
   #loadingAnim {
@@ -107,7 +105,6 @@ const ScHeroImg = styled('div')`
   }
   @keyframes bubbleToggleHero {
       to {
-        /* transform: translate(-50%, -10%) scale(12); // Grow Bubble */
         transform: translate(-50%, -10%) scale(0); // Shrink Bubble
       }
     }

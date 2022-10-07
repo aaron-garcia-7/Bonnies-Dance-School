@@ -17,7 +17,6 @@ function AboutImg({pageWidth, navOpen}) {
   }, [offset])
   
   const parallaxStyle = {
-    // transform: pageWidth > 768 ? `translate(0, ${offset * -0.12}px)` : `translate(0, ${offset * -0.08}px)`,
     transform: pageWidth > 768 ? `translate(0, ${offset * -0.1}px)` : `translate(0, ${offset * -0.08}px)`,
   }
 
@@ -93,7 +92,6 @@ const ScAboutImg = styled('div')`
   @media (max-width: 1440px) {
     top: 12%;
       .dancer2 {
-        /* top: 42%; */
         top: 32%;
       }
     }
@@ -133,7 +131,6 @@ const ScAboutImg = styled('div')`
     }
     .dancer2 {
       top: 72%;
-      /* width: 24vw; */
     }
   }
 

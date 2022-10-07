@@ -26,7 +26,6 @@ const ScPoly = styled.div`
     position: absolute;
     top: 0;
     left: 50%;
-    /* transform: translate(-50%, -32%); */
     transform: translate(-50%, 0) scale(1.2);
     width: 2.6rem !important;
     height: 8rem;

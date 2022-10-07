@@ -52,7 +52,7 @@ const Footer = ({ pageWidth }) => {
               smooth={"easeInOutQuart"}
               duration={800}
               delay={40}
-              offset={pageWidth > 768 ? -240 : -60}
+              offset={pageWidth > 1440 ? -240 : pageWidth < 768 ? -60 : -140}
             >
               About
             </Link>
@@ -148,7 +148,6 @@ const ScFooter = styled.footer`
     p {
       font-family: "Quicksand", sans-serif;
       font-size: calc(0.5rem + 0.4vw);
-      /* font-size: calc(0.7rem + 0.2vw); */
       font-weight: 400;
       &:nth-of-type(1) {
         margin-bottom: 1rem;

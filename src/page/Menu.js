@@ -77,7 +77,7 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
                 to="about"
                 duration={0}
                 delay={0}
-                offset={pageWidth > 768 ? -240 : -100}
+                offset={pageWidth > 1440 ? -240 : pageWidth < 768 ? -60 : -140}
                 onClick={() => setNavOpen(false)}
               >
                 About

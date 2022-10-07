@@ -56,7 +56,6 @@ const ScNav = styled("nav")`
       left: 0;
       border-radius: 2px;
       transition: all 0.6s cubic-bezier(0.6, 0.1, 0.4, 1.3);
-      /* transition: transform 0.7s cubic-bezier(0.65, -1.18, 0.36, 2.03); */
 
       width: 20;
       top: calc(50% - ((3.5px)) + -1px);
