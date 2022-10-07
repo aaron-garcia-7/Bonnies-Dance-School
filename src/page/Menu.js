@@ -4,6 +4,7 @@ import styled from "styled-components";
 import phone from "../images/phone.svg";
 import mail from "../images/mail.svg";
 import registrationPdf from "../documents/Registration.pdf";
+import SocialMedia from "../components/SocialMedia";
 
 function Menu({ navOpen, setNavOpen, pageWidth }) {
   const menuStyle = {
@@ -38,6 +39,11 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
     transition: "transform 1s cubic-bezier(.31,1.1,.73,1.1) 1.2s",
   };
 
+  const footerStyle = {
+    opacity: 1,
+    transition: "opacity 2s cubic-bezier(.31,1.1,.73,1.1) 1.4s",
+  };
+
   return (
     <ScMenu style={navOpen ? menuStyle : null}>
       <div className="list">
@@ -49,7 +55,13 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
         <ul>
           <li>
             <div className="linkBlock" style={navOpen ? linkStyle : null}>
-              <a href={registrationPdf} target="_blank">
+              <a
+                href={registrationPdf}
+                target="_blank"
+                rel="noreferrer"
+                onFocus={() => setNavOpen(true)}
+                tabIndex={3}
+              >
                 Register
               </a>
             </div>
@@ -63,7 +75,6 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
             <div className="linkBlock" style={navOpen ? linkStyle3 : null}>
               <Link
                 to="about"
-                // smooth={"easeInOutQuart"}
                 duration={0}
                 delay={0}
                 offset={pageWidth > 768 ? -240 : -100}
@@ -74,16 +85,17 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
             </div>
           </li>
         </ul>
+        {pageWidth <= 768 && <SocialMedia inMenu={true} navOpen={navOpen} />}
       </div>
       <div className="menuBubble1" style={navOpen ? bubbleStyle1 : null} />
       <div className="menuBubble2" style={navOpen ? bubbleStyle2 : null} />
-      <footer className="menuFooter">
+      <footer className="menuFooter" style={navOpen ? footerStyle : null}>
         <div className="left">
           <a href="sms:8012029032">
-            <img src={phone} /> 801-513-6972
+            <img src={phone} alt="" /> 801-513-6972
           </a>
           <a href="mailto:bonniesdanceschool@gmail.com">
-            <img src={mail} /> bonniesdanceschool@gmail.com
+            <img src={mail} alt="" /> bonniesdanceschool@gmail.com
           </a>
         </div>
         <div className="right">
@@ -91,6 +103,7 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
             href="https://goo.gl/maps/ELECSz7HCWkmLdbM6"
             target="_blank"
             rel="noreferrer"
+            onFocus={() => setNavOpen(true)}
           >
             5372 Harvest Mill Dr. <br /> West Jordan, UT 84081
           </a>
@@ -124,7 +137,6 @@ const ScMenu = styled("aside")`
     header {
       overflow: hidden;
       height: calc(4rem + 2vw);
-      margin-bottom: 2rem;
       .headerBlock {
         transform: translateY(100%);
         transition: 0.6s ease 0.04s;
@@ -141,6 +153,7 @@ const ScMenu = styled("aside")`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      margin: 2.8rem 0 3.6rem 0;
       li {
         overflow: hidden;
         .linkBlock {
@@ -199,16 +212,21 @@ const ScMenu = styled("aside")`
 
   .menuFooter {
     bottom: 1.2rem;
+    opacity: 0;
     width: 100vw;
     display: flex;
     justify-content: space-between;
     height: 4rem;
     padding: 0 2vw;
+    transition: opacity 0.3s ease 0s;
     div {
       a {
         font-size: calc(0.6rem + 0.4vw);
         line-height: 1.6rem;
-        transition: 0.4s ease;
+        transition: color 0.4s ease;
+        &:hover {
+          color: var(--plum);
+        }
         img {
           padding: 0 0.1rem;
           transform: scale(1);
@@ -221,12 +239,34 @@ const ScMenu = styled("aside")`
       flex-direction: column;
       a {
         &:hover {
-          color: var(--plum);
           img {
             padding-right: 0.6rem;
             transform: scale(1.3);
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    #socialMediaMenu {
+      opacity: 0;
+      transform: translate(-1vw, 0);
+    }
+
+    .menuFooter {
+      .right {
+        a {
+          line-height: 0.6rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 520px) {
+    .menuFooter {
+      .right {
+        transform: translate(0, -0.2rem);
       }
     }
   }

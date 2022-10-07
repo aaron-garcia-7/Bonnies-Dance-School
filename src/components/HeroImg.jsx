@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import dancer1 from '../images/dancer1.svg';
-import roundText from '../images/roundText.svg';
+import roundText1 from '../images/roundText1.svg';
 
 function HeroImg({pageWidth, navOpen}) {
   // Parallax Effect
@@ -31,14 +31,19 @@ function HeroImg({pageWidth, navOpen}) {
 
   const menuStyleBubble = {
     transform: "translate(-50%, 10%) scale(1)",
-    animation: "bubbleMenuToggle 1s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
+    animation: "bubbleToggleHero 1s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
+  }
+
+  const roundText = {
+    opacity: 1,
+    animation: "fadeBack 0.2s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
   }
 
   return (
     <ScHeroImg>
         <div className="bubbleHero" style={navOpen ? menuStyleBubble : null} id={loading ? "loadingAnim" : "menuAnim"}/>
         <img src={dancer1} alt="Line art of a girl dancing" className='dancer1' style={parallaxStyle}/>
-        <img src={roundText} alt="Pursuing growth through dance" className='roundText' />
+        <img src={roundText1} alt="Pursuing growth through dance" className='roundText' style={navOpen ? roundText : null}/>
         <h4 className='a11y'>Pursing growth through dance</h4>
     </ScHeroImg>
   )
@@ -100,7 +105,7 @@ const ScHeroImg = styled('div')`
       transform: translate(-50%, 10%) scale(1);
     }
   }
-  @keyframes bubbleMenuToggle {
+  @keyframes bubbleToggleHero {
       to {
         /* transform: translate(-50%, -10%) scale(12); // Grow Bubble */
         transform: translate(-50%, -10%) scale(0); // Shrink Bubble

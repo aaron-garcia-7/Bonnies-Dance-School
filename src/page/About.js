@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import styled from "styled-components";
 import AboutImg from "../components/AboutImg";
 
-function About({ pageWidth }) {
+function About({ pageWidth, navOpen }) {
   const [ref, inView] = useInView({
     threshold: pageWidth > 768 ? 0.1 : 0.4,
     triggerOnce: true,
@@ -23,19 +23,35 @@ function About({ pageWidth }) {
   };
   // End Parallax
 
+  const menuStyleHeader = {
+    transform: pageWidth > 768 ? "translateY(120%)" : "translateY(80%)",
+    opacity: 0,
+    transition: "0.8s ease 0.2s",
+  };
+  const menuStyleParagraph = {
+    transform: pageWidth > 768 ? "translateY(80%)" : "translateY(40%)",
+    opacity: 0,
+    transition: "0.8s ease 0.1s",
+  };
+  const menuStyleList = {
+    transform: pageWidth > 768 ? "translateY(80%)" : "translateY(40%)",
+    opacity: 0,
+    transition: "0.8s ease",
+  };
+
   return (
     <ScAbout ref={ref} id="about">
-      {inView && <AboutImg pageWidth={pageWidth} />}
+      {inView && <AboutImg pageWidth={pageWidth} navOpen={navOpen} />}
       <article className="aboutTextArea">
-        <header>
+        <header style={navOpen ? menuStyleHeader : null}>
           <h3 className="sectionTitle">About Me</h3>
         </header>
-        <p>
+        <p style={navOpen ? menuStyleParagraph : null}>
           <strong>Hi! My name is Bonnie.</strong> I’m a dance enthusiast seeking
           to help my dancers experience physical, intellectual, and emotional
           growth through the power of dance.
         </p>
-        <ul>
+        <ul style={navOpen ? menuStyleList : null}>
           <li>30+ years of dancing experience</li>
           <li>14+ years of teaching experience</li>
           <li>1,000+ happy dancers</li>
@@ -64,13 +80,17 @@ const ScAbout = styled("section")`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    h3 {
-      // See Global Styles
-      font-size: calc(1rem + 2vw);
+    header {
+      transition: 1.4s ease 0.5s;
+      h3 {
+        // See Global Styles
+        font-size: calc(1rem + 2vw);
+      }
     }
     p {
       font-size: calc(0.6rem + 0.8vw);
       letter-spacing: 0.08rem;
+      transition: transform 1.4s ease 0.6s, opacity 1s ease 0.6s;
       strong {
         font-size: calc(0.8rem + 1.2vw);
         font-weight: 100;
@@ -78,6 +98,7 @@ const ScAbout = styled("section")`
     }
     ul {
       margin-left: 1.6rem;
+      transition: 1.4s ease 0.7s;
       li {
         position: relative;
         font-family: var(--modern);

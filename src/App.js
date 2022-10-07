@@ -44,10 +44,14 @@ function App() {
       <ToTop />
       <Menu navOpen={navOpen} setNavOpen={setNavOpen} pageWidth={pageWidth} />
       <Nav navOpen={navOpen} setNavOpen={setNavOpen} pageWidth={pageWidth} />
-      <Hero pageWidth={pageWidth} navOpen={navOpen} />
+      <Hero pageWidth={pageWidth} navOpen={navOpen} setNavOpen={setNavOpen} />
       <SubHero pageWidth={pageWidth} navOpen={navOpen} />
-      <About pageWidth={pageWidth} />
-      <Location pageWidth={pageWidth} />
+      <About pageWidth={pageWidth} navOpen={navOpen} />
+      <Location
+        pageWidth={pageWidth}
+        navOpen={navOpen}
+        setNavOpen={setNavOpen} // Close Nav for a11y tab index
+      />
       <Footer pageWidth={pageWidth} />
     </div>
   );

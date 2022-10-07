@@ -4,10 +4,22 @@ import map from "../images/map.png";
 import pin from "../images/pin.svg";
 import roundText3 from "../images/roundText3.svg";
 
-function LocationImg() {
+function LocationImg({navOpen}) {
+
+    const menuStyle = {
+        transform: "translate(0, -50%) scale(1)",
+        opacity: 1,
+        animation: "mapToggle 1s cubic-bezier(.55,.29,.24,1.11) 0.2s forwards",
+      }
+
+      const roundText = {
+        opacity: 1,
+        animation: "fadeBack 0.2s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
+      }
+
   return (
     <ScLocationImg>      
-        <figure>
+        <figure style={navOpen ? menuStyle : null}>
             <a
             href="https://goo.gl/maps/ELECSz7HCWkmLdbM6"
             target="_blank"
@@ -17,7 +29,7 @@ function LocationImg() {
             <img src={pin} alt="" />
             </a>
         </figure>
-        <img src={roundText3} alt="Tap to expand the map" className='roundText3'/>
+        <img src={roundText3} alt="Tap to expand the map" className='roundText3' style={navOpen ? roundText : null}/>
         <h4 className='a11y'>Tap to expand the map</h4>
     </ScLocationImg>
   )
@@ -40,7 +52,7 @@ const ScLocationImg = styled('div')`
         border-radius: 50%;
         overflow: hidden;
         opacity: 0;
-        animation: fadeGrow 1.8s cubic-bezier(.56,-0.46,.4,1.42) 1.2s forwards;
+        animation: fadeGrow 1.4s cubic-bezier(.56,-0.46,.4,1.42) 0.4s forwards;
         img {
             &:nth-of-type(1) {
                 position: absolute;
@@ -71,7 +83,7 @@ const ScLocationImg = styled('div')`
         width: 11vw;
         z-index: -1;
         opacity: 0;
-        animation: fade 2s ease 2.4s forwards;
+        animation: fade 1.4s ease 1.4s forwards;
     }
 
     @keyframes fadeGrow {
@@ -79,6 +91,12 @@ const ScLocationImg = styled('div')`
             opacity: 1;
             transform: translate(0, -50%) scale(1);
         }
+    }
+    @keyframes mapToggle {
+      to {
+        transform: translate(0, -50%) scale(0); // Shrink Map
+        opacity: 0;
+      }
     }
 
     @media (max-width: 768px) {

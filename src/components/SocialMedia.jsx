@@ -3,9 +3,14 @@ import styled from 'styled-components';
 import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
 
-function SocialMedia({inHero, inFooter}) {
+function SocialMedia({inHero, inFooter, inMenu, navOpen}) {
+
+  const reveal = {
+    animation: 'fade 1.2s ease 1.4s forwards',
+  }
+
   return (
-    <ScSocialMedia id={inHero ? "socialMediaHero" : inFooter ? "socialMediaFooter" : null}>
+    <ScSocialMedia id={inHero ? "socialMediaHero" : inFooter ? "socialMediaFooter" : "socialMediaMenu"} style={inMenu && navOpen ? reveal : null}>
       <a href="https://www.facebook.com/profile.php?id=100057303255853&ref=hl" target="_blank">
         <img src={facebook} alt="facebook icon" className='socialMediaIcon'/>
       </a>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import LocationImg from "../components/LocationImg";
 import Poly from "../components/Poly";
 
-function Location({ pageWidth }) {
+function Location({ pageWidth, navOpen, setNavOpen }) {
   const [ref, inView] = useInView({
     threshold: pageWidth > 768 ? 0.1 : 0.4,
     triggerOnce: true,
@@ -12,49 +12,75 @@ function Location({ pageWidth }) {
 
   // Parallax Effect
   const [offset, setOffset] = useState(0);
-
   const parallaxScroll = () => {
     setOffset(window.scrollY);
   };
-
   useEffect(() => {
     window.addEventListener("scroll", parallaxScroll);
     return () => window.removeEventListener("scroll", parallaxScroll);
   }, [offset]);
-
   const parallaxStyle = {
     transform: `translate(0, ${offset * 0.08}px)`,
   };
   // End Parallax
+
+  const menuStyleHeader = {
+    transform: pageWidth > 768 ? "translateY(80%)" : "translateY(40%)",
+    opacity: 0,
+    transition: "0.8s ease 0.2s",
+  };
+  const menuStyleParagraph = {
+    transform: pageWidth > 768 ? "translateY(80%)" : "translateY(40%)",
+    opacity: 0,
+    transition: "0.8s ease 0.1s",
+  };
+  const menuStyleButton = {
+    transform: pageWidth > 768 ? "translateY(160%)" : "translateY(120%)",
+    opacity: 0,
+    transition: "0.8s ease",
+  };
+
   return (
     <ScLocation ref={ref}>
       <Poly inLocation={true} />
       <div className="bubbleLocation" style={parallaxStyle} />
       <article>
-        <header>
-          <h3 className="sectionTitle">Where You Can Find Us!</h3>
+        <header style={navOpen ? menuStyleHeader : null}>
+          {pageWidth > 768 && (
+            <h3 className="sectionTitle">Where You Can Find Us!</h3>
+          )}
+          {pageWidth <= 768 && (
+            <h3 className="sectionTitle">
+              Where To <br /> Find Us!
+            </h3>
+          )}
         </header>
-        <a
-          href="https://goo.gl/maps/ELECSz7HCWkmLdbM6"
-          target="_blank"
-          rel="noreferrer"
-          className="address"
-        >
-          5372 Harvestmill Dr. <br /> West Jordan, UT 84081
-        </a>
-        <p className="instructions">
-          Please be mindful not to park in front of others' driveways
-        </p>
-        <a
-          href="https://goo.gl/maps/ELECSz7HCWkmLdbM6"
-          target="_blank"
-          rel="noreferrer"
-          className="link"
-        >
-          Expand Map
-        </a>
+        <div className="textArea" style={navOpen ? menuStyleParagraph : null}>
+          <a
+            href="https://goo.gl/maps/ELECSz7HCWkmLdbM6"
+            target="_blank"
+            rel="noreferrer"
+            className="address"
+            onFocus={() => setNavOpen(false)}
+          >
+            5372 Harvestmill Dr. <br /> West Jordan, UT 84081
+          </a>
+          <p className="instructions">
+            Please be mindful not to park <br /> in front of others' driveways
+          </p>
+        </div>
+        <button style={navOpen ? menuStyleButton : null}>
+          <a
+            href="https://goo.gl/maps/ELECSz7HCWkmLdbM6"
+            target="_blank"
+            rel="noreferrer"
+            className="link"
+          >
+            Expand Map
+          </a>
+        </button>
       </article>
-      {inView && <LocationImg />}
+      {inView && <LocationImg navOpen={navOpen} />}
     </ScLocation>
   );
 }
@@ -69,49 +95,58 @@ const ScLocation = styled("section")`
     header {
       width: 80%;
       margin-bottom: 3.6rem;
+      transition: transform 1.4s ease 0.3s, opacity 1.4s ease 0.3s;
       h3 {
         // See Global Styles
         font-size: calc(1rem + 2vw);
       }
     }
-    .address {
-      font-size: calc(0.4rem + 0.8vw);
+    .textArea {
+      transition: transform 1.4s ease 0.5s, opacity 1.4s ease 0.5s;
+      .address {
+        font-size: calc(0.4rem + 0.8vw);
+      }
+      .instructions {
+        width: 15rem;
+        margin: 1rem 0 3.6rem 0;
+        font-family: var(--modern);
+        font-size: calc(0.5rem + 0.3vw);
+        letter-spacing: 0.06rem;
+      }
     }
-    .instructions {
-      width: 15rem;
-      margin: 1rem 0 3.6rem 0;
-      font-family: var(--modern);
-      font-size: calc(0.5rem + 0.3vw);
-      letter-spacing: 0.06rem;
-    }
-    .link {
-      position: relative;
-      width: 4rem;
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background: var(--maroon);
-        height: 2px;
-        transition: 0.7s cubic-bezier(0.55, -1.62, 0.36, 2.03);
-        pointer-events: none;
-      }
-      &::before {
-        transform: translate(0%, 2px) scale(1);
-        width: 100%;
-      }
-      &::after {
-        transform: translate(0%, 6px) scale(1);
-        width: 68%;
-      }
-      &:hover {
+    button {
+      border: none;
+      background: none;
+      transition: transform 1.4s ease 0.7s, opacity 1.4s ease 0.7s;
+      .link {
+        position: relative;
+        width: 4rem;
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          background: var(--maroon);
+          height: 2px;
+          transition: 0.7s cubic-bezier(0.55, -1.62, 0.36, 2.03);
+          pointer-events: none;
+        }
         &::before {
-          width: 48%;
+          transform: translate(0%, 2px) scale(1);
+          width: 100%;
         }
         &::after {
-          width: 100%;
+          transform: translate(0%, 6px) scale(1);
+          width: 68%;
+        }
+        &:hover {
+          &::before {
+            width: 48%;
+          }
+          &::after {
+            width: 100%;
+          }
         }
       }
     }

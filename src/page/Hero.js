@@ -6,7 +6,7 @@ import ScrollDown from "../components/ScrollDown";
 import SocialMedia from "../components/SocialMedia";
 import registrationPdf from "../documents/Registration.pdf";
 
-function Hero({ pageWidth, navOpen }) {
+function Hero({ pageWidth, navOpen, setNavOpen }) {
   const menuStyle = {
     transform: "translateY(120%)",
     opacity: 0,
@@ -41,10 +41,15 @@ function Hero({ pageWidth, navOpen }) {
         />
       )}
       <div className="ctaDiv" style={navOpen ? menuStyle : null}>
-        <a href={registrationPdf} target="_blank" className="link">
+        <a href={registrationPdf} target="_blank" className="link" tabIndex={1}>
           Register
         </a>
-        <a href="sms:8012029032" className="link">
+        <a
+          href="sms:8012029032"
+          className="link"
+          tabIndex={2}
+          onFocus={() => setNavOpen(false)}
+        >
           Contact
         </a>
       </div>

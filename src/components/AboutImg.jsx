@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import dancer2 from '../images/dancer2.svg';
 import roundText2 from '../images/roundText2.svg';
 
-function AboutImg({pageWidth}) {
+function AboutImg({pageWidth, navOpen}) {
   const [offset, setOffset] = useState(0);
   
   const parallaxScroll = () => {
@@ -21,11 +21,21 @@ function AboutImg({pageWidth}) {
     transform: pageWidth > 768 ? `translate(0, ${offset * -0.1}px)` : `translate(0, ${offset * -0.08}px)`,
   }
 
+  const menuStyleBubble = {
+    transform: "translate(-50%, -36%) scale(1)",
+    animation: "bubbleToggleAbout 1s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
+  }
+
+  const roundText = {
+    opacity: 1,
+    animation: "fadeBack 0.2s cubic-bezier(.55,.29,.24,1.11) 0s forwards",
+  }
+
   return (
     <ScAboutImg>
-        <div className="bubbleAbout" />
+        <div className="bubbleAbout" style={navOpen ? menuStyleBubble : null} />
         <img src={dancer2} alt="Line art of a girl in a difficult dance pose." className='dancer2' style={parallaxStyle}/>
-        <img src={roundText2} alt="Wholesome investment" className='roundText2'/>
+        <img src={roundText2} alt="Wholesome investment" className='roundText2' style={navOpen ? roundText : null}/>
         <h4 className='a11y'>Wholesome investment</h4>
     </ScAboutImg>
   )
@@ -49,7 +59,7 @@ const ScAboutImg = styled('div')`
       background: var(--tan);
       opacity: 0.4;
       border-radius: 50%;
-      animation: bubbleGrow 1.4s cubic-bezier(.56,-0.46,.4,1.42) 0.8s forwards;
+      animation: bubbleGrow 1.4s cubic-bezier(.56,-0.46,.4,1.42) 0.2s forwards;
     }
     .roundText2 {
       top: 40%; // To match Bubble
@@ -57,7 +67,7 @@ const ScAboutImg = styled('div')`
       transform: translate(-20%, -80%);
       width: 12vw;
       opacity: 0;
-      animation: fade 2s ease 1.6s forwards;
+      animation: fade 2s ease 1.4s forwards;
     }
     .dancer2 {
       /* top: 36%; */
@@ -65,13 +75,18 @@ const ScAboutImg = styled('div')`
       left: 20%;
       width: 16vw;
       opacity: 0;
-      animation: fade 2s ease 1.6s forwards;
+      animation: fade 2s ease 1.2s forwards;
     }
 
 
     @keyframes bubbleGrow {
       to {
         transform: translate(-50%, -36%) scale(1);
+      }
+    }
+    @keyframes bubbleToggleAbout {
+      to {
+        transform: translate(-50%, -36%) scale(0); // Shrink Bubble
       }
     }
 

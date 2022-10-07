@@ -83,6 +83,12 @@ const GlobalStyles = createGlobalStyle`
             opacity: 1;
         }
     }
+
+    @keyframes fadeBack {
+        to {
+            opacity: 0;
+        }
+    }
 `;
 
 export default GlobalStyles;
