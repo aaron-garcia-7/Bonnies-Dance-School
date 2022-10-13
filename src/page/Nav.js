@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SocialMedia from "../components/SocialMedia";
 
 function Nav({ navOpen, setNavOpen, pageWidth }) {
+  const [fromTop, setFromTop] = useState(false);
+
+  const checkDistance = () => {
+    window.scrollY > 60 ? setFromTop(true) : setFromTop(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", checkDistance);
+
+    return () => window.removeEventListener("scroll", checkDistance);
+  }, [fromTop]);
+
+  const logoStyle = {
+    transform: fromTop && !navOpen ? "translate(-1vw, -400%)" : null,
+    transition: navOpen ? "1.2s ease" : "0.6s ease",
+  };
+
   return (
     <ScNav>
       {pageWidth > 768 && <SocialMedia />}
-      <h4>Logo {pageWidth > 768 && "Here"}</h4>
+      {/* <h4>Logo {pageWidth > 768 && "Here"}</h4> */}
+      <h4 style={logoStyle}>Bonnie’s Dance School</h4>
       <div
         className={navOpen ? "burger active" : "burger"}
         onClick={() => setNavOpen((prev) => !prev)}

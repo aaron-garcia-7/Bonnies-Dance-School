@@ -85,7 +85,12 @@ const Footer = ({ pageWidth }) => {
         {/* <a href="https://garciathe.dev" target="_blank" rel="noreferrer">
           &lt; Designed &amp; Developed by <span>Aaron Garcia</span> &gt;
         </a> */}
-        <a href="https://garciathe.dev" target="_blank" rel="noreferrer">
+        {/* <a href="https://garciathe.dev" target="_blank" rel="noreferrer"> */}
+        <a
+          href="https://www.linkedin.com/in/aaron-garcia-3b7081211/"
+          target="_blank"
+          rel="noreferrer"
+        >
           Made with <img src={heart} className="heart" /> by{" "}
           <span>Aaron Garcia</span>
         </a>
