@@ -39,7 +39,7 @@ const Footer = ({ pageWidth }) => {
         <h4>Quick Links</h4>
         <ul>
           <li>
-            <a href={registrationPdf} target="_blank">
+            <a href={registrationPdf} target="_blank" rel="noreferrer">
               Register
             </a>
           </li>
@@ -87,7 +87,7 @@ const Footer = ({ pageWidth }) => {
           target="_blank"
           rel="noreferrer"
         >
-          Made with <img src={heart} className="heart" /> by{" "}
+          Made with <img src={heart} alt="" className="heart" /> by{" "}
           <span>Aaron Garcia</span>
         </a>
       </div>

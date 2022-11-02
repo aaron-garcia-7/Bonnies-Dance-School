@@ -41,7 +41,13 @@ function Hero({ pageWidth, navOpen, setNavOpen }) {
         />
       )}
       <div className="ctaDiv" style={navOpen ? menuStyle : null}>
-        <a href={registrationPdf} target="_blank" className="link" tabIndex={1}>
+        <a
+          href={registrationPdf}
+          target="_blank"
+          rel="noreferrer"
+          className="link"
+          tabIndex={1}
+        >
           Register
         </a>
         <a
