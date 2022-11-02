@@ -72,6 +72,7 @@ const GlobalStyles = createGlobalStyle`
 
     @keyframes fade {
         to {
+            pointer-events: all;
             opacity: 1;
         }
     }

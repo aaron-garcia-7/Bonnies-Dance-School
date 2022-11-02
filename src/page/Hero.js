@@ -71,6 +71,7 @@ const ScHero = styled("section")`
     .link {
       position: relative;
       opacity: 0;
+      pointer-events: none;
       animation: fade 2s ease 2.2s forwards;
       &:nth-of-type(1) {
         margin-right: 2vw;

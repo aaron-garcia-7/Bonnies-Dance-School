@@ -124,8 +124,6 @@ const ScMenu = styled("aside")`
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.6s cubic-bezier(0.21, 0.81, 0.55, 1.02) 0.4s;
-  /* overflow-y: scroll; */
-
   > * {
     position: absolute;
   }
