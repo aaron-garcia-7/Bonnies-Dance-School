@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-scroll";
 import styled from "styled-components";
 import HeroImg from "../components/HeroImg";
 import HeroTitle from "../components/HeroTitle";
@@ -6,7 +7,7 @@ import ScrollDown from "../components/ScrollDown";
 import SocialMedia from "../components/SocialMedia";
 import registrationPdf from "../documents/Registration.pdf";
 
-function Hero({ pageWidth, navOpen, setNavOpen }) {
+function Hero({ pageWidth, navOpen, setNavOpen, setContact }) {
   const menuStyle = {
     transform: "translateY(120%)",
     opacity: 0,
@@ -50,14 +51,19 @@ function Hero({ pageWidth, navOpen, setNavOpen }) {
         >
           Register
         </a>
-        <a
-          href="sms:8015136972"
+        <Link
+          href="#footer"
           className="link"
+          to="footer"
+          smooth={"easeInCubic"}
+          duration={800}
+          delay={20}
           tabIndex={2}
           onFocus={() => setNavOpen(false)}
+          onClick={() => setContact(true)}
         >
           Contact
-        </a>
+        </Link>
       </div>
       <ScrollDown />
       {pageWidth <= 768 && <SocialMedia inHero={true} />}

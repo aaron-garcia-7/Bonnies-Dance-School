@@ -13,6 +13,7 @@ function App() {
   const [scrollLock, setScrollLock] = useState(true);
   const [navOpen, setNavOpen] = useState(false);
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
+  const [contact, setContact] = useState(false);
 
   const checkWidth = () => {
     setPageWidth(window.innerWidth);
@@ -33,6 +34,15 @@ function App() {
     };
   }, [pageWidth]);
 
+  useEffect(() => {
+    console.log(contact);
+    const contactTimeout = setTimeout(() => {
+      setContact(false);
+    }, 2400);
+
+    return () => clearTimeout(contactTimeout);
+  }, [contact]);
+
   // Scroll To Top on Page Refresh
   window.onbeforeunload = () => {
     window.scrollTo(0, 0);
@@ -42,9 +52,19 @@ function App() {
     <div id="top">
       <GlobalStyles scrollLock={scrollLock} />
       <ToTop />
-      <Menu navOpen={navOpen} setNavOpen={setNavOpen} pageWidth={pageWidth} />
+      <Menu
+        navOpen={navOpen}
+        setNavOpen={setNavOpen}
+        pageWidth={pageWidth}
+        setContact={setContact}
+      />
       <Nav navOpen={navOpen} setNavOpen={setNavOpen} pageWidth={pageWidth} />
-      <Hero pageWidth={pageWidth} navOpen={navOpen} setNavOpen={setNavOpen} />
+      <Hero
+        pageWidth={pageWidth}
+        navOpen={navOpen}
+        setNavOpen={setNavOpen}
+        setContact={setContact}
+      />
       <SubHero pageWidth={pageWidth} navOpen={navOpen} />
       <About pageWidth={pageWidth} navOpen={navOpen} />
       <Location
@@ -52,7 +72,7 @@ function App() {
         navOpen={navOpen}
         setNavOpen={setNavOpen} // Close Nav for a11y tab index
       />
-      <Footer pageWidth={pageWidth} />
+      <Footer pageWidth={pageWidth} contact={contact} />
     </div>
   );
 }

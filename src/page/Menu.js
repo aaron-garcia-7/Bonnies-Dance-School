@@ -6,7 +6,7 @@ import mail from "../images/mail.svg";
 import registrationPdf from "../documents/Registration.pdf";
 import SocialMedia from "../components/SocialMedia";
 
-function Menu({ navOpen, setNavOpen, pageWidth }) {
+function Menu({ navOpen, setNavOpen, pageWidth, setContact }) {
   const menuStyle = {
     opacity: 1,
     pointerEvents: "all",
@@ -68,15 +68,22 @@ function Menu({ navOpen, setNavOpen, pageWidth }) {
           </li>
           <li>
             <div className="linkBlock" style={navOpen ? linkStyle2 : null}>
-              <a href="sms:8015136972">Contact</a>
+              <Link
+                to="footer"
+                offset={pageWidth > 1440 ? -240 : pageWidth < 768 ? -60 : -140}
+                onClick={() => {
+                  setNavOpen(false);
+                  setContact(true);
+                }}
+              >
+                Contact
+              </Link>
             </div>
           </li>
           <li>
             <div className="linkBlock" style={navOpen ? linkStyle3 : null}>
               <Link
                 to="about"
-                duration={0}
-                delay={0}
                 offset={pageWidth > 1440 ? -240 : pageWidth < 768 ? -60 : -140}
                 onClick={() => setNavOpen(false)}
               >

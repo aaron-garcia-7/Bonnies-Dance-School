@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SocialMedia from "../components/SocialMedia";
+import logo from "../images/logo.svg";
+import logoAlt from "../images/logoAlt.svg";
 
 function Nav({ navOpen, setNavOpen, pageWidth }) {
   const [fromTop, setFromTop] = useState(false);
@@ -16,15 +18,21 @@ function Nav({ navOpen, setNavOpen, pageWidth }) {
   }, [fromTop]);
 
   const logoStyle = {
-    transform: fromTop && !navOpen ? "translate(-1vw, -400%)" : null,
-    transition: navOpen ? "1.2s ease" : "0.6s ease",
+    transform:
+      fromTop && !navOpen ? "translate(-1vw, -400%)" : "translate(-1vw, 10%)",
+    transition: navOpen ? "transform 1.2s ease" : "transform 0.6s ease",
   };
 
   return (
     <ScNav>
       {pageWidth > 768 && <SocialMedia />}
-      {/* <h4>Logo {pageWidth > 768 && "Here"}</h4> */}
-      <h4 style={logoStyle}>Bonnie’s Dance School</h4>
+      {/* <h4 style={logoStyle}>Bonnie’s Dance School</h4> */}
+      {!navOpen && (
+        <img className="logo" src={logo} alt="logo" style={logoStyle} />
+      )}
+      {navOpen && (
+        <img className="logo" src={logoAlt} alt="logo" style={logoStyle} />
+      )}
       <div
         className={navOpen ? "burger active" : "burger"}
         onClick={() => setNavOpen((prev) => !prev)}
@@ -49,10 +57,17 @@ const ScNav = styled("nav")`
   z-index: 5;
   animation: menuDrop 1s ease 3.2s forwards;
 
-  h4 {
+  /* h4 {
     font-weight: 100;
     text-transform: uppercase;
     transform: translate(-1vw, 0);
+  } */
+
+  .logo {
+    /* width: 4rem; */
+    width: calc(2rem + 2vw);
+    opacity: 0;
+    animation: fade 0.8s ease 0.6s forwards;
   }
 
   .burger {

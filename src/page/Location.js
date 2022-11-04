@@ -47,7 +47,7 @@ function Location({ pageWidth, navOpen, setNavOpen }) {
       <article>
         <header style={navOpen ? menuStyleHeader : null}>
           {pageWidth > 768 && (
-            <h3 className="sectionTitle">Where You Can Find Us!</h3>
+            <h3 className="sectionTitle">Where You Can Find Us</h3>
           )}
           {pageWidth <= 768 && (
             <h3 className="sectionTitle">

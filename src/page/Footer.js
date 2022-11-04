@@ -6,14 +6,18 @@ import heart from "../images/heart.svg";
 import SocialMedia from "../components/SocialMedia";
 import registrationPdf from "../documents/Registration.pdf";
 
-const Footer = ({ pageWidth }) => {
+const Footer = ({ pageWidth, contact }) => {
   const [ref, inView] = useInView({
     threshold: 0.5,
     triggerOnce: true,
   });
 
+  const contactTitle = {
+    animation: contact ? "wobble 0.8s 2 both 0.9s" : "",
+  };
+
   return (
-    <ScFooter ref={ref}>
+    <ScFooter ref={ref} id="footer">
       <div className="divider">
         {inView && <div className="dash" />}
         {inView && <Poly inFooter={true} />}
@@ -60,7 +64,7 @@ const Footer = ({ pageWidth }) => {
         </ul>
       </div>
       <div className="contact">
-        <h4>Contact Information</h4>
+        <h4 style={contactTitle}>Contact Information</h4>
         <p className="contactMethod">
           Phone<a href="sms:8015136972">801-513-6972</a>
         </p>
@@ -283,6 +287,65 @@ const ScFooter = styled.footer`
   @keyframes footerDash {
     to {
       width: 46%;
+    }
+  }
+
+  @-webkit-keyframes wobble {
+    0%,
+    100% {
+      -webkit-transform: translateX(0%);
+      transform: translateX(0%);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+    }
+    15% {
+      -webkit-transform: translateX(-30px) rotate(-6deg);
+      transform: translateX(-30px) rotate(-6deg);
+    }
+    30% {
+      -webkit-transform: translateX(15px) rotate(6deg);
+      transform: translateX(15px) rotate(6deg);
+    }
+    45% {
+      -webkit-transform: translateX(-15px) rotate(-3.6deg);
+      transform: translateX(-15px) rotate(-3.6deg);
+    }
+    60% {
+      -webkit-transform: translateX(9px) rotate(2.4deg);
+      transform: translateX(9px) rotate(2.4deg);
+    }
+    75% {
+      -webkit-transform: translateX(-6px) rotate(-1.2deg);
+      transform: translateX(-6px) rotate(-1.2deg);
+    }
+  }
+  @keyframes wobble {
+    0%,
+    100% {
+      -webkit-transform: translateX(0%);
+      transform: translateX(0%);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+    }
+    15% {
+      -webkit-transform: translateX(-30px) rotate(-6deg);
+      transform: translateX(-30px) rotate(-6deg);
+    }
+    30% {
+      -webkit-transform: translateX(15px) rotate(6deg);
+      transform: translateX(15px) rotate(6deg);
+    }
+    45% {
+      -webkit-transform: translateX(-15px) rotate(-3.6deg);
+      transform: translateX(-15px) rotate(-3.6deg);
+    }
+    60% {
+      -webkit-transform: translateX(9px) rotate(2.4deg);
+      transform: translateX(9px) rotate(2.4deg);
+    }
+    75% {
+      -webkit-transform: translateX(-6px) rotate(-1.2deg);
+      transform: translateX(-6px) rotate(-1.2deg);
     }
   }
 
