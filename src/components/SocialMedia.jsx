@@ -11,10 +11,10 @@ function SocialMedia({inHero, inFooter, inMenu, navOpen}) {
 
   return (
     <ScSocialMedia id={inHero ? "socialMediaHero" : inFooter ? "socialMediaFooter" : "socialMediaMenu"} style={inMenu && navOpen ? reveal : null}>
-      <a href="https://www.facebook.com/profile.php?id=100057303255853&ref=hl" target="_blank">
+      <a href="https://www.facebook.com/profile.php?id=100057303255853&ref=hl" target="_blank" rel="noreferrer">
         <img src={facebook} alt="facebook icon" className='socialMediaIcon'/>
       </a>
-      <a href="https://www.instagram.com/bonniesdanceschool/" target="_blank">
+      <a href="https://www.instagram.com/bonniesdanceschool/" target="_blank" rel="noreferrer">
         <img src={instagram} alt="instagram icon" className='socialMediaIcon'/>
       </a>
     </ScSocialMedia>

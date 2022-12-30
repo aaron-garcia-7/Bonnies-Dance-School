@@ -70,12 +70,12 @@ const ScHeroImg = styled('div')`
     width: 32vw;
     height: 32vw;
     border-radius: 50%;
-    animation: bubbleShrink cubic-bezier(.55,.29,.24,1.11) forwards;
+    animation: bubbleShrink cubic-bezier(.58,.36,.64,1.06) forwards;
   }
   #loadingAnim {
     transform: translate(-50%, 10%) scale(12); // Grow Bubble
-    animation-duration: 2s;
-    animation-delay: 1s;
+    animation-duration: 2.4s;
+    animation-delay: 0.4s;
   }
   #menuAnim {
     transform: translate(-50%, 10%) scale(0); // Shrink Bubble

@@ -47,9 +47,9 @@ function About({ pageWidth, navOpen }) {
           <h3 className="sectionTitle">About Me</h3>
         </header>
         <p style={navOpen ? menuStyleParagraph : null}>
-          <strong>Hi! My name is Bonnie.</strong> I’m a dance enthusiast seeking
-          to help my dancers experience physical, intellectual, and emotional
-          growth through the power of dance.
+          Hello! My name is Bonnie. I’m a dance enthusiast seeking to help my
+          dancers experience physical, intellectual, and emotional growth
+          through the power of dance.
         </p>
         <ul style={navOpen ? menuStyleList : null}>
           <li>30+ years of dancing experience</li>
@@ -66,7 +66,6 @@ function About({ pageWidth, navOpen }) {
 }
 
 const ScAbout = styled("section")`
-  /* border: 2px solid blue; */
   height: 60vh;
   min-height: 30rem;
   > * {
@@ -91,10 +90,6 @@ const ScAbout = styled("section")`
       font-size: calc(0.6rem + 0.8vw);
       letter-spacing: 0.08rem;
       transition: transform 1.4s ease 0.6s, opacity 1s ease 0.6s;
-      strong {
-        font-size: calc(0.8rem + 1.2vw);
-        font-weight: 100;
-      }
     }
     ul {
       margin-left: 1.6rem;

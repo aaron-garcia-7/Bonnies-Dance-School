@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-import Nav from "./page/Nav";
+import { Helmet } from "react-helmet";
 import GlobalStyles from "./GlobalStyles";
+import ToTop from "./components/ToTop";
+
+// Sections
+import Nav from "./page/Nav";
+import Menu from "./page/Menu";
 import Hero from "./page/Hero";
 import SubHero from "./page/SubHero";
 import About from "./page/About";
 import Location from "./page/Location";
-import ToTop from "./components/ToTop";
 import Footer from "./page/Footer";
-import Menu from "./page/Menu";
 
 function App() {
   const [scrollLock, setScrollLock] = useState(true);
@@ -50,6 +53,18 @@ function App() {
 
   return (
     <div id="top">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Bonnie's Dance School</title>
+        <meta
+          name="description"
+          content="Bonnie's Dance School | Pursue growth through dance"
+        />
+        <meta
+          name="keywords"
+          content="dance, dance lessons, dance lessons west jordan, ballet, contemporary, balllet dance lessons, contemporary dance lessons"
+        />
+      </Helmet>
       <GlobalStyles scrollLock={scrollLock} />
       <ToTop />
       <Menu
