@@ -125,6 +125,7 @@ const ScMenu = styled("aside")`
   top: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   min-height: 24rem;
   background: var(--taupe);
   z-index: 4;

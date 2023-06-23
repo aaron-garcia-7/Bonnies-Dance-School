@@ -64,6 +64,13 @@ function App() {
           name="keywords"
           content="dance, dance lessons, dance lessons west jordan, ballet, contemporary, balllet dance lessons, contemporary dance lessons"
         />
+        <meta property="og:title" content="Bonnie's Dance School" />
+        <meta
+          property="og:description"
+          content="Bonnie's Dance School | Pursue growth through dance"
+        />
+        <meta property="og:image" content="../public/open-graph.webp" />
+        <meta property="og:url" content="https://bonniesdanceschool.com/" />
       </Helmet>
       <GlobalStyles scrollLock={scrollLock} />
       <ToTop />

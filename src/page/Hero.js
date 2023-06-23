@@ -77,6 +77,7 @@ const ScHero = styled("section")`
     position: absolute;
   }
   .ctaDiv {
+    /* border: 1px dashed grey; */
     bottom: 20%;
     left: 14%;
     transition: transform 0.9s ease 0.6s, opacity 0.9s ease 0.6s;
@@ -84,37 +85,35 @@ const ScHero = styled("section")`
       position: relative;
       opacity: 0;
       pointer-events: none;
+      transition: 0.4s ease 0.2s;
       animation: fade 2s ease 2.2s forwards;
       &:nth-of-type(1) {
+        position: relative;
         margin-right: 2vw;
+        padding: 0.4rem 1.6rem;
         &::before,
         &::after {
           content: "";
           position: absolute;
-          bottom: 0;
-          left: 0;
-          border-radius: 50%;
-          background: var(--maroon);
-          transition: 0.6s cubic-bezier(0.74, -0.7, 0.46, 1.36);
-          pointer-events: none;
+          top: 50%;
+          left: 50%;
+          width: 98%;
+          height: 98%;
+          border: 2px solid var(--maroon);
+          transition: 0.4s cubic-bezier(0.66, -0.62, 0.4, 1.53);
         }
         &::before {
-          transform: translate(-100%, 100%) scale(1);
-          width: 2rem;
-          height: 2rem;
+          transform: translate(-52%, -56%);
         }
         &::after {
-          transform: translate(20%, 320%) scale(1);
-          width: 0.8rem;
-          height: 0.8rem;
-          transition-delay: 0.1s;
+          transform: translate(-48%, -44%);
         }
         &:hover {
-          &::before {
-            transform: translate(-100%, 100%) scale(0.4);
-          }
+          background: var(--maroon);
+          color: #fef2f2;
+          &::before,
           &::after {
-            transform: translate(20%, 320%) scale(1.8);
+            transform: translate(-50%, -50%);
           }
         }
       }
@@ -176,19 +175,14 @@ const ScHero = styled("section")`
 
     .ctaDiv {
       bottom: 26%;
-      left: 20%;
+      left: 18%;
       .link {
         &:nth-of-type(1) {
           margin-right: 6vw;
-          &::before {
-            transform: translate(-100%, 100%) scale(1);
-            width: 1.6rem;
-            height: 1.6rem;
-          }
+          padding: 0.4rem 1.2rem;
+          &::before,
           &::after {
-            transform: translate(20%, 320%) scale(1);
-            width: 0.6rem;
-            height: 0.6rem;
+            border: 1px solid var(--maroon);
           }
         }
         &:nth-of-type(2) {
@@ -202,7 +196,7 @@ const ScHero = styled("section")`
 
     #socialMediaHero {
       position: absolute;
-      bottom: 5rem;
+      bottom: 2rem;
       right: 2vw;
       flex-direction: column;
       width: 1.8rem;

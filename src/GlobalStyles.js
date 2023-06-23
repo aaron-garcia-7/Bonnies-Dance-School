@@ -33,6 +33,7 @@ const GlobalStyles = createGlobalStyle`
     section {
         position: relative;
         height: 100vh;
+        height: 100dvh;
         min-height: 38rem;
         overflow: ${(props) => (props.scrollLock ? "hidden" : "default")};
     }

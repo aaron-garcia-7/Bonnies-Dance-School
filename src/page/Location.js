@@ -210,10 +210,12 @@ const ScLocation = styled("section")`
         margin: 1.4rem 0 2.6rem 0;
         font-size: calc(0.5rem + 0.4vw);
       }
-      .link {
-        &::before,
-        &::after {
-          height: 1px;
+      button {
+        .link {
+          &::before,
+          &::after {
+            height: 1px;
+          }
         }
       }
     }
