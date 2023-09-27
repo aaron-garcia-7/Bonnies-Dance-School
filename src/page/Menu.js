@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 import styled from "styled-components";
 import phone from "../images/phone.svg";
 import mail from "../images/mail.svg";
-import registrationPdf from "../documents/Registration.pdf";
+import registrationPDF from "../documents/registration.pdf";
 import SocialMedia from "../components/SocialMedia";
 
 function Menu({ navOpen, setNavOpen, pageWidth, setContact }) {
@@ -56,7 +56,7 @@ function Menu({ navOpen, setNavOpen, pageWidth, setContact }) {
           <li>
             <div className="linkBlock" style={navOpen ? linkStyle : null}>
               <a
-                href={registrationPdf}
+                href={registrationPDF}
                 target="_blank"
                 rel="noreferrer"
                 onFocus={() => setNavOpen(true)}

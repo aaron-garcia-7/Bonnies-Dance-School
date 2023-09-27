@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Poly from "../components/Poly";
 import heart from "../images/heart.svg";
 import SocialMedia from "../components/SocialMedia";
-import registrationPdf from "../documents/Registration.pdf";
+import registrationPDF from "../documents/registration.pdf";
 
 const Footer = ({ pageWidth, contact }) => {
   const [ref, inView] = useInView({
@@ -43,7 +43,7 @@ const Footer = ({ pageWidth, contact }) => {
         <h4>Quick Links</h4>
         <ul>
           <li>
-            <a href={registrationPdf} target="_blank" rel="noreferrer">
+            <a href={registrationPDF} target="_blank" rel="noreferrer">
               Register
             </a>
           </li>

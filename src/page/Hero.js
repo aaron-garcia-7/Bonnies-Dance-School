@@ -5,7 +5,7 @@ import HeroImg from "../components/HeroImg";
 import HeroTitle from "../components/HeroTitle";
 import ScrollDown from "../components/ScrollDown";
 import SocialMedia from "../components/SocialMedia";
-import registrationPdf from "../documents/Registration.pdf";
+import registrationPDF from "../documents/registration.pdf";
 
 function Hero({ pageWidth, navOpen, setNavOpen, setContact }) {
   const menuStyle = {
@@ -43,7 +43,7 @@ function Hero({ pageWidth, navOpen, setNavOpen, setContact }) {
       )}
       <div className="ctaDiv" style={navOpen ? menuStyle : null}>
         <a
-          href={registrationPdf}
+          href={registrationPDF}
           target="_blank"
           rel="noreferrer"
           className="link"
